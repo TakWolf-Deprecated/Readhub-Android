@@ -51,12 +51,6 @@
             android:drawableLeft="@drawable/ic_open_in_browser_grey600_24dp"
             android:text="@string/visit_official_web" />
 
-        <TextView style="@style/AppWidget.NavigationItem"
-            android:id="@+id/btn_sponsors"
-            android:drawableStart="@drawable/ic_face_grey600_24dp"
-            android:drawableLeft="@drawable/ic_face_grey600_24dp"
-            android:text="@string/sponsors" />
-
         <View style="@style/AppWidget.NavigationItemDeepLineGap" />
 
         <TextView style="@style/AppWidget.NavigationItem"

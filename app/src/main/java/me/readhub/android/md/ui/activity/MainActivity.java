@@ -1,5 +1,6 @@
 package me.readhub.android.md.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -9,10 +10,12 @@ import android.support.v7.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.ui.adapter.MainPagerAdapter;
 import me.readhub.android.md.ui.base.FullLayoutActivity;
 import me.readhub.android.md.ui.listener.NavigationOpenClickListener;
+import me.readhub.android.md.ui.util.Navigator;
 
 public class MainActivity extends FullLayoutActivity {
 
@@ -41,6 +44,22 @@ public class MainActivity extends FullLayoutActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(adapter.getCount());
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @OnClick(R.id.btn_visit_official_web)
+    void onBtnVisitOfficialWebClick() {
+        Navigator.openInBrowser(this, getString(R.string.official_home_page_content));
+    }
+
+    @OnClick(R.id.btn_share_to_friends)
+    void onBtnShareToFriendsClick() {
+        String text = getString(R.string.official_home_page_content) + "\n" + getString(R.string.app_name) + "\n" + getString(R.string.app_summary);
+        Navigator.openShare(this, text);
+    }
+
+    @OnClick(R.id.btn_about)
+    void onBtnAboutClick() {
+        startActivity(new Intent(this, AboutActivity.class));
     }
 
 }

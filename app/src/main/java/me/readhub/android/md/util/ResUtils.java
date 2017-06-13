@@ -5,6 +5,12 @@ import android.content.res.TypedArray;
 import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
+import android.support.annotation.RawRes;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public final class ResUtils {
 
@@ -23,6 +29,19 @@ public final class ResUtils {
         } finally {
             a.recycle();
         }
+    }
+
+    public static String getRawString(@NonNull Context context, @RawRes int rawId) throws IOException {
+        InputStream is = context.getResources().openRawResource(rawId);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        reader.close();
+        return sb.toString();
     }
 
 }
