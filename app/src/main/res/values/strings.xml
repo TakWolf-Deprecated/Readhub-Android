@@ -16,4 +16,7 @@
     <string name="tab_news">科技动态</string>
     <string name="tab_technews">开发者资讯</string>
 
+    <string name="site_name_$_author_name_$_time">%1$s / %2$s · %3$s</string>
+    <string name="site_name_$_time">%1$s · %2$s</string>
+
 </resources>
