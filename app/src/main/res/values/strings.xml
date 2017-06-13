@@ -4,4 +4,9 @@
     <string name="app_name">Readhub</string>
     <string name="app_summary">每天3分钟，科技要闻一览</string>
 
+    <string name="visit_official_web">访问官方页面</string>
+    <string name="sponsors">赞助商</string>
+    <string name="share_to_friends">分享给朋友</string>
+    <string name="about">关于</string>
+
 </resources>

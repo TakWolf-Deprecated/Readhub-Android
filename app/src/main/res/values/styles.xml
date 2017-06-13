@@ -9,12 +9,69 @@
         <item name="colorAccent">@color/color_accent</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:listDivider">@color/list_divider</item>
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="AppTheme.Launch">
         <item name="android:windowBackground">@color/color_primary</item>
+    </style>
+
+    <!-- App Widget -->
+
+    <style name="AppWidget" parent="Theme.AppCompat.Light" />
+
+    <!-- Deep Line -->
+
+    <style name="AppWidget.DeepLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="AppWidget.DeepLine.Vertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- Gap -->
+
+    <style name="AppWidget.ItemGap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">8dp</item>
+    </style>
+
+    <style name="AppWidget.ShadowGap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/shadow_gap_elevation</item>
+        <item name="android:layout_marginBottom">@dimen/shadow_gap_margin_fill</item>
+        <item name="android:background">@drawable/gap_shadow</item>
+    </style>
+
+    <style name="AppWidget.ShadowGap.Opposite">
+        <item name="android:layout_marginTop">@dimen/shadow_gap_margin_fill</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:background">@drawable/gap_shadow_opposite</item>
+    </style>
+
+    <!-- Navigation -->
+
+    <style name="AppWidget.NavigationItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:drawablePadding">32dp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="AppWidget.NavigationItemDeepLineGap" parent="AppWidget.DeepLine">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
     </style>
 
 </resources>
