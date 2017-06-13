@@ -1,0 +1,49 @@
+package me.readhub.android.md.presenter.implement;
+
+import android.app.Activity;
+import android.support.annotation.NonNull;
+
+import me.readhub.android.md.model.api.ApiClient;
+import me.readhub.android.md.model.entity.News;
+import me.readhub.android.md.model.entity.Pageable;
+import me.readhub.android.md.presenter.contract.INewsListPresenter;
+import me.readhub.android.md.presenter.contract.IPageablePresenter;
+import me.readhub.android.md.ui.fragment.NewsListFragment;
+import me.readhub.android.md.ui.view.INewsListView;
+import retrofit2.Call;
+
+public class NewsListPresenter implements INewsListPresenter {
+
+    private static final int PAGE_SIZE = 20;
+
+    private final int tab;
+    private final IPageablePresenter<News> pageablePresenter;
+
+    public NewsListPresenter(@NonNull Activity activity, @NonNull INewsListView newsListView, int tab) {
+        this.tab = tab;
+        pageablePresenter = new PageablePresenter<>(activity, newsListView);
+    }
+
+    @Override
+    public void refreshNewsListAsyncTask() {
+        Call<Pageable<News>> call;
+        if (tab == NewsListFragment.TAB_NEWS) {
+            call = ApiClient.service.getNewsList(null, PAGE_SIZE);
+        } else {
+            call = ApiClient.service.getTechNewsList(null, PAGE_SIZE);
+        }
+        pageablePresenter.refreshAsyncTask(call);
+    }
+
+    @Override
+    public void loadMoreNewsListAsyncTask(long lastCursor) {
+        Call<Pageable<News>> call;
+        if (tab == NewsListFragment.TAB_NEWS) {
+            call = ApiClient.service.getNewsList(lastCursor, PAGE_SIZE);
+        } else {
+            call = ApiClient.service.getTechNewsList(lastCursor, PAGE_SIZE);
+        }
+        pageablePresenter.loadMoreAsyncTask(call);
+    }
+
+}

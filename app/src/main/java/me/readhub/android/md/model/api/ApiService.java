@@ -11,7 +11,7 @@ public interface ApiService {
 
     @GET("topic")
     Call<Pageable<Topic>> getTopicList(
-            @Query("lastCursor") Integer lastCursor,
+            @Query("lastCursor") Long lastCursor,
             @Query("pageSize") int pageSize
     );
 

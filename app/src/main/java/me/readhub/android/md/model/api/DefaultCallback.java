@@ -6,9 +6,9 @@ import android.support.annotation.NonNull;
 import me.readhub.android.md.ui.util.ToastUtils;
 import okhttp3.Headers;
 
-public class ToastDefaultCallback<Data> extends ForegroundCallback<Data> {
+public class DefaultCallback<Data> extends ForegroundCallback<Data> {
 
-    public ToastDefaultCallback(@NonNull Activity activity) {
+    public DefaultCallback(@NonNull Activity activity) {
         super(activity);
     }
 

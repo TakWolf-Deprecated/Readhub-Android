@@ -1,0 +1,71 @@
+package me.readhub.android.md.ui.adapter;
+
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import me.readhub.android.md.R;
+import me.readhub.android.md.model.entity.News;
+
+public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHolder> {
+
+    private final Activity activity;
+    private final LayoutInflater inflater;
+    private final List<News> newsList = new ArrayList<>();
+
+    public NewsListAdapter(@NonNull Activity activity) {
+        this.activity = activity;
+        inflater = LayoutInflater.from(activity);
+    }
+
+    @NonNull
+    public List<News> getNewsList() {
+        return newsList;
+    }
+
+    @Override
+    public int getItemCount() {
+        return newsList.size();
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(inflater.inflate(R.layout.item_news, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.update(newsList.get(position));
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.tv_title)
+        TextView tvTitle;
+
+        private News news;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        void update(@NonNull News news) {
+            this.news = news;
+
+
+            tvTitle.setText(news.getTitle());
+        }
+
+    }
+
+}
