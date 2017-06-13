@@ -9,4 +9,8 @@
     <string name="share_to_friends">分享给朋友</string>
     <string name="about">关于</string>
 
+    <string name="tab_topic">热门话题</string>
+    <string name="tab_news">科技动态</string>
+    <string name="tab_technews">开发者资讯</string>
+
 </resources>
