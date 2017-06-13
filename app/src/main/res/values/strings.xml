@@ -2,5 +2,6 @@
 <resources>
 
     <string name="app_name">Readhub</string>
+    <string name="app_summary">每天3分钟，科技要闻一览</string>
 
 </resources>

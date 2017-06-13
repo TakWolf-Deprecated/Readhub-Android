@@ -5,5 +5,6 @@
     <color name="color_primary_dark">#455A64</color>
     <color name="color_accent">@color/color_primary</color>
     <color name="window_background">#ffeeeeee</color>
+    <color name="translucent_status">#66000000</color>
 
 </resources>
