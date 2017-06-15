@@ -71,7 +71,7 @@ public class Topic {
     }
 
     public DateTime getPublishDate() {
-        return publishDate;
+        return publishDate == null ? getUpdatedAt() : publishDate; // TODO 发布时间有可能为空？
     }
 
     public void setPublishDate(DateTime publishDate) {
