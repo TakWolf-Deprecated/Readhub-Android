@@ -75,6 +75,7 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
     public void onRefreshOk(@NonNull Pageable<Topic> pageable) {
         listAdapter.getTopicList().clear();
         listAdapter.getTopicList().addAll(pageable.getDataList());
+        listAdapter.clearExpandStates();
         listAdapter.notifyDataSetChanged();
         refreshLayout.setRefreshing(false);
         loadMoreFooter.setState(pageable.getDataList().isEmpty() ? LoadMoreFooter.STATE_DISABLED : LoadMoreFooter.STATE_ENDLESS);

@@ -49,9 +49,6 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
-    @BindView(R.id.progress_bar_top)
-    ProgressBar progressBarTop;
-
     private String title;
     private String url;
 
@@ -85,13 +82,11 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 progressBar.setVisibility(View.VISIBLE);
-                progressBarTop.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
-                progressBarTop.setVisibility(View.GONE);
             }
 
         });
@@ -100,7 +95,6 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 progressBar.setProgress(newProgress);
-                progressBarTop.setProgress(newProgress);
             }
 
         });
