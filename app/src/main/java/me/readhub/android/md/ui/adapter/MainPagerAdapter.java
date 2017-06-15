@@ -21,8 +21,8 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
         R.string.tab_technews
     };
 
-    private final List<Fragment> fragmentList = new ArrayList<>();
     private final Context context;
+    private final List<Fragment> fragmentList = new ArrayList<>();
 
     public MainPagerAdapter(@NonNull Context context, @NonNull FragmentManager manager) {
         super(manager);

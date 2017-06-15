@@ -1,6 +1,7 @@
 package me.readhub.android.md.ui.adapter;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.entity.News;
+import me.readhub.android.md.ui.activity.DetailActivity;
 import me.readhub.android.md.util.FormatUtils;
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHolder> {
@@ -82,9 +84,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
         @OnClick(R.id.btn_item)
         void onBtnItemClick() {
-
-            // TODO
-
+            DetailActivity.start(activity, news.getTitle(), news.getUrl());
         }
 
     }
