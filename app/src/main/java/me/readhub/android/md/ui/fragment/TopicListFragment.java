@@ -68,7 +68,7 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public void onLoadMore() {
-        topicListPresenter.loadMoreTopicListAsyncTask(listAdapter.getTopicList().get(listAdapter.getTopicList().size() - 1).getId());
+        topicListPresenter.loadMoreTopicListAsyncTask(listAdapter.getTopicList().get(listAdapter.getTopicList().size() - 1).getOrder());
     }
 
     @Override

@@ -8,51 +8,66 @@ import java.util.List;
 
 public class Topic {
 
-    private long id;
-
-    private String title;
-
-    private String summary;
-
-    @SerializedName("newsArray")
-    private List<TopicSource> sourceList;
-
-    private DateTime publishDate;
+    private String id;
 
     private DateTime createdAt;
 
+    private TopicNelData nelData;
+
+    @SerializedName("newsArray")
+    private List<TopicNews> newsList;
+
+    private long order;
+
+    private DateTime publishDate;
+
+    @SerializedName("relatedTopicArray")
+    private List<Object> relatedTopicList;
+
+    private String summary;
+
+    private String title;
+
     private DateTime updatedAt;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public DateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCreatedAt(DateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getSummary() {
-        return summary;
+    public TopicNelData getNelData() {
+        return nelData;
     }
 
-    public void setSummary(String summary) {
-        this.summary = summary;
+    public void setNelData(TopicNelData nelData) {
+        this.nelData = nelData;
     }
 
-    public List<TopicSource> getSourceList() {
-        return sourceList;
+    public List<TopicNews> getNewsList() {
+        return newsList;
     }
 
-    public void setSourceList(List<TopicSource> sourceList) {
-        this.sourceList = sourceList;
+    public void setNewsList(List<TopicNews> newsList) {
+        this.newsList = newsList;
+    }
+
+    public long getOrder() {
+        return order;
+    }
+
+    public void setOrder(long order) {
+        this.order = order;
     }
 
     public DateTime getPublishDate() {
@@ -63,12 +78,28 @@ public class Topic {
         this.publishDate = publishDate;
     }
 
-    public DateTime getCreatedAt() {
-        return createdAt;
+    public List<Object> getRelatedTopicList() {
+        return relatedTopicList;
     }
 
-    public void setCreatedAt(DateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setRelatedTopicList(List<Object> relatedTopicList) {
+        this.relatedTopicList = relatedTopicList;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public DateTime getUpdatedAt() {

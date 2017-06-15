@@ -2,7 +2,7 @@ package me.readhub.android.md.model.entity;
 
 import org.joda.time.DateTime;
 
-public class TopicSource {
+public class TopicNews {
 
     private long id;
 

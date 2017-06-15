@@ -11,6 +11,8 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.lang.reflect.Type;
 
@@ -24,6 +26,8 @@ public final class EntityUtils {
 
     private static class DateTimeTypeAdapter implements JsonSerializer<DateTime>, JsonDeserializer<DateTime> {
 
+        private static final DateTimeFormatter formatterCompat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+
         @Override
         public JsonElement serialize(DateTime src, Type typeOfSrc, JsonSerializationContext context) {
             return new JsonPrimitive(src.toString());
@@ -31,7 +35,11 @@ public final class EntityUtils {
 
         @Override
         public DateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-            return new DateTime(json.getAsString());
+            try {
+                return new DateTime(json.getAsString());
+            } catch (IllegalArgumentException e) {
+                return DateTime.parse(json.getAsString(), formatterCompat);
+            }
         }
 
     }
