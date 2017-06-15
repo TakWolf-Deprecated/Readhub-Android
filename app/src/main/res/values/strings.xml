@@ -8,6 +8,7 @@
     <string name="load_more_failed">加载失败，点击重试</string>
 
     <string name="no_browser_install_in_system">系统中没有安装浏览器</string>
+    <string name="open_in_browser">在浏览器中打开</string>
     <string name="share">分享</string>
 
     <string name="visit_official_web">访问 Web 端</string>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -21,9 +22,10 @@ import butterknife.ButterKnife;
 import me.readhub.android.md.R;
 import me.readhub.android.md.ui.base.StatusBarActivity;
 import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
+import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.util.HandlerUtils;
 
-public class DetailActivity extends StatusBarActivity implements SwipeRefreshLayout.OnRefreshListener, Runnable {
+public class DetailActivity extends StatusBarActivity implements SwipeRefreshLayout.OnRefreshListener, Runnable, Toolbar.OnMenuItemClickListener {
 
     private static final String EXTRA_TITLE = "title";
     private static final String EXTRA_URL = "url";
@@ -47,6 +49,12 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    @BindView(R.id.progress_bar_top)
+    ProgressBar progressBarTop;
+
+    private String title;
+    private String url;
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +62,12 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
 
-        String title = getIntent().getStringExtra(EXTRA_TITLE);
-        String url = getIntent().getStringExtra(EXTRA_URL);
+        title = getIntent().getStringExtra(EXTRA_TITLE);
+        url = getIntent().getStringExtra(EXTRA_URL);
 
         toolbar.setNavigationOnClickListener(new NavigationFinishClickListener(this));
+        toolbar.inflateMenu(R.menu.detail);
+        toolbar.setOnMenuItemClickListener(this);
         toolbar.setTitle(title);
 
         refreshLayout.setColorSchemeResources(R.color.color_primary);
@@ -75,11 +85,13 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 progressBar.setVisibility(View.VISIBLE);
+                progressBarTop.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
+                progressBarTop.setVisibility(View.GONE);
             }
 
         });
@@ -88,6 +100,7 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 progressBar.setProgress(newProgress);
+                progressBarTop.setProgress(newProgress);
             }
 
         });
@@ -98,6 +111,21 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
     protected void onDestroy() {
         webView.destroy();
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_open_in_browser:
+                Navigator.openInBrowser(this, url);
+                return true;
+            case R.id.action_share:
+                String text = "《" + title + "》\n" + url + "\n—— 来自Readhub的分享";
+                Navigator.openShare(this, text);
+                return true;
+            default:
+                return false;
+        }
     }
 
     @Override

@@ -27,9 +27,10 @@
                 android:id="@+id/progress_bar"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
+                android:layout_marginBottom="2dp"
                 android:layout_gravity="bottom"
                 android:indeterminateOnly="false"
-                android:progressDrawable="@drawable/web_view_progress"
+                android:progressDrawable="@drawable/web_view_progress_white"
                 android:visibility="gone"
                 tools:progress="50"
                 tools:visibility="visible" />
@@ -56,5 +57,16 @@
         </android.support.v4.widget.NestedScrollView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="2dp"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/web_view_progress_theme"
+        android:visibility="gone"
+        tools:progress="50"
+        tools:visibility="visible" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,7 +1,6 @@
 package me.readhub.android.md.ui.adapter;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
