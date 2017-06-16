@@ -111,25 +111,21 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
             }
         }
 
-        @NonNull
-        View getIdleNewsView() {
-            View view;
-            if (newsViewPool.isEmpty()) {
-                view = inflater.inflate(R.layout.item_topic_news, layoutSource, false);
-            } else {
-                view = newsViewPool.remove(0);
-            }
-            return view;
-        }
-
         void adjustLayoutSourceChildren(int count) {
-            int childCount = layoutSource.getChildCount();
-            if (childCount < count) {
-                for (int i = 0; i < count - childCount; i++) {
-                    layoutSource.addView(getIdleNewsView());
+            if (layoutSource.getChildCount() < count) {
+                int offset = count - layoutSource.getChildCount();
+                for (int i = 0; i < offset; i++) {
+                    View view;
+                    if (newsViewPool.isEmpty()) {
+                        view = inflater.inflate(R.layout.item_topic_news, layoutSource, false);
+                    } else {
+                        view = newsViewPool.remove(0);
+                    }
+                    layoutSource.addView(view);
                 }
-            } else if (childCount > count) {
-                for (int i = 0; i < childCount - count; i++) {
+            } else if (layoutSource.getChildCount() > count) {
+                int offset = layoutSource.getChildCount() - count;
+                for (int i = 0; i < offset; i++) {
                     View view = layoutSource.getChildAt(0);
                     layoutSource.removeView(view);
                     newsViewPool.add(view);
