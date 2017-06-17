@@ -49,9 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_arrow_upward_white_24dp"
-            app:elevation="8dp"
-            app:pressedTranslationZ="16dp" />
+            android:src="@drawable/ic_arrow_upward_white_24dp" />
 
     </android.support.design.widget.CoordinatorLayout>
 
