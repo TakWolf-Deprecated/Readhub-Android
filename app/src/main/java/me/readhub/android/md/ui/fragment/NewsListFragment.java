@@ -20,10 +20,11 @@ import me.readhub.android.md.presenter.contract.INewsListPresenter;
 import me.readhub.android.md.presenter.implement.NewsListPresenter;
 import me.readhub.android.md.ui.adapter.NewsListAdapter;
 import me.readhub.android.md.ui.util.ToastUtils;
+import me.readhub.android.md.ui.view.IBackToTopView;
 import me.readhub.android.md.ui.view.INewsListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
 
-public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, INewsListView {
+public class NewsListFragment extends Fragment implements IBackToTopView, SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, INewsListView {
 
     public static final int TAB_NEWS = 0;
     public static final int TAB_TECHNEWS = 1;
@@ -76,6 +77,11 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setRefreshing(true);
         onRefresh();
+    }
+
+    @Override
+    public void backToTop() {
+        recyclerView.smoothScrollToPosition(0);
     }
 
     @Override

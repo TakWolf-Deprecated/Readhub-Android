@@ -12,6 +12,7 @@ import java.util.List;
 import me.readhub.android.md.R;
 import me.readhub.android.md.ui.fragment.NewsListFragment;
 import me.readhub.android.md.ui.fragment.TopicListFragment;
+import me.readhub.android.md.ui.view.IBackToTopView;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
@@ -46,6 +47,10 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return context.getString(titleIds[position]);
+    }
+
+    public void backToTop(int position) {
+         ((IBackToTopView) fragmentList.get(position)).backToTop();
     }
 
 }

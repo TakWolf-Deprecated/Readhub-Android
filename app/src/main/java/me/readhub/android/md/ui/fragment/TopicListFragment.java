@@ -20,10 +20,11 @@ import me.readhub.android.md.presenter.contract.ITopicListPresenter;
 import me.readhub.android.md.presenter.implement.TopicListPresenter;
 import me.readhub.android.md.ui.adapter.TopicListAdapter;
 import me.readhub.android.md.ui.util.ToastUtils;
+import me.readhub.android.md.ui.view.IBackToTopView;
 import me.readhub.android.md.ui.view.ITopicListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
 
-public class TopicListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, ITopicListView {
+public class TopicListFragment extends Fragment implements IBackToTopView, SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, ITopicListView {
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -59,6 +60,11 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setRefreshing(true);
         onRefresh();
+    }
+
+    @Override
+    public void backToTop() {
+        recyclerView.smoothScrollToPosition(0);
     }
 
     @Override

@@ -2,6 +2,7 @@ package me.readhub.android.md.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -22,6 +23,9 @@ public class MainActivity extends FullLayoutActivity {
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
+    @BindView(R.id.app_bar_layout)
+    AppBarLayout appBarLayout;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -30,6 +34,8 @@ public class MainActivity extends FullLayoutActivity {
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
+
+    MainPagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +46,16 @@ public class MainActivity extends FullLayoutActivity {
         drawerLayout.setDrawerShadow(R.drawable.navigation_drawer_shadow, GravityCompat.START);
         toolbar.setNavigationOnClickListener(new NavigationOpenClickListener(drawerLayout));
 
-        MainPagerAdapter adapter = new MainPagerAdapter(this, getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(adapter.getCount());
+        pagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(pagerAdapter.getCount());
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @OnClick(R.id.fab_back_to_top)
+    void onBtnBackToTopClick() {
+        appBarLayout.setExpanded(true, true);
+        pagerAdapter.backToTop(viewPager.getCurrentItem());
     }
 
     @OnClick(R.id.btn_visit_official_web)
