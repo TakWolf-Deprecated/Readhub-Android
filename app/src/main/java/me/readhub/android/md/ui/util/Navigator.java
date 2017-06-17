@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringDef;
 
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.storage.shared.SettingShared;

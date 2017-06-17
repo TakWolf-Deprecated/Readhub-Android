@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.entity.News;
-import me.readhub.android.md.ui.activity.ArticleActivity;
 import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.util.FormatUtils;
 
