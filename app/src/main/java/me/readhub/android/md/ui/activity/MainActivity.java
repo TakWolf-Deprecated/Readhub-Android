@@ -18,6 +18,7 @@ import me.readhub.android.md.ui.adapter.MainPagerAdapter;
 import me.readhub.android.md.ui.base.FullLayoutActivity;
 import me.readhub.android.md.ui.listener.NavigationOpenClickListener;
 import me.readhub.android.md.ui.util.Navigator;
+import me.readhub.android.md.ui.util.ToastUtils;
 
 public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnOffsetChangedListener {
 
@@ -42,6 +43,7 @@ public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnO
     private MainPagerAdapter pagerAdapter;
 
     private int lastAppBarVerticalOffset = 0;
+    private long firstBackPressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,21 @@ public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnO
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(pagerAdapter.getCount());
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            long secondBackPressedTime = System.currentTimeMillis();
+            if (secondBackPressedTime - firstBackPressedTime > 2000) {
+                ToastUtils.with(this).show(R.string.press_back_again_to_exit);
+                firstBackPressedTime = secondBackPressedTime;
+            } else {
+                super.onBackPressed();
+            }
+        }
     }
 
     @Override
