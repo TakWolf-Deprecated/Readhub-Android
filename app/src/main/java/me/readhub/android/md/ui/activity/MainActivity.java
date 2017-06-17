@@ -3,6 +3,7 @@ package me.readhub.android.md.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -12,13 +13,14 @@ import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnPageChange;
 import me.readhub.android.md.R;
 import me.readhub.android.md.ui.adapter.MainPagerAdapter;
 import me.readhub.android.md.ui.base.FullLayoutActivity;
 import me.readhub.android.md.ui.listener.NavigationOpenClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 
-public class MainActivity extends FullLayoutActivity {
+public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnOffsetChangedListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -35,7 +37,12 @@ public class MainActivity extends FullLayoutActivity {
     @BindView(R.id.view_pager)
     ViewPager viewPager;
 
-    MainPagerAdapter pagerAdapter;
+    @BindView(R.id.fab_back_to_top)
+    FloatingActionButton fabBackToTop;
+
+    private MainPagerAdapter pagerAdapter;
+
+    private int lastAppBarVerticalOffset = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +52,27 @@ public class MainActivity extends FullLayoutActivity {
 
         drawerLayout.setDrawerShadow(R.drawable.navigation_drawer_shadow, GravityCompat.START);
         toolbar.setNavigationOnClickListener(new NavigationOpenClickListener(drawerLayout));
+        appBarLayout.addOnOffsetChangedListener(this);
 
         pagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(pagerAdapter.getCount());
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if (verticalOffset > lastAppBarVerticalOffset) {
+            fabBackToTop.show();
+        } else if (verticalOffset < lastAppBarVerticalOffset) {
+            fabBackToTop.hide();
+        }
+        lastAppBarVerticalOffset = verticalOffset;
+    }
+
+    @OnPageChange(R.id.view_pager)
+    void onPageSelected(int position) {
+        fabBackToTop.show();
     }
 
     @OnClick(R.id.fab_back_to_top)
