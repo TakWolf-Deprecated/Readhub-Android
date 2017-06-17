@@ -57,6 +57,11 @@ public class MainActivity extends FullLayoutActivity {
         Navigator.openShare(this, text);
     }
 
+    @OnClick(R.id.btn_setting)
+    void onBtnSettingClick() {
+        startActivity(new Intent(this, AboutActivity.class));
+    }
+
     @OnClick(R.id.btn_about)
     void onBtnAboutClick() {
         startActivity(new Intent(this, AboutActivity.class));

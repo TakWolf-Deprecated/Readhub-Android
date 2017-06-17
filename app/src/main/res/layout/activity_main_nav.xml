@@ -51,13 +51,19 @@
             android:drawableLeft="@drawable/ic_open_in_browser_grey600_24dp"
             android:text="@string/visit_official_web" />
 
-        <View style="@style/AppWidget.NavigationItemDeepLineGap" />
-
         <TextView style="@style/AppWidget.NavigationItem"
             android:id="@+id/btn_share_to_friends"
             android:drawableStart="@drawable/ic_share_grey600_24dp"
             android:drawableLeft="@drawable/ic_share_grey600_24dp"
             android:text="@string/share_to_friends" />
+
+        <View style="@style/AppWidget.NavigationItemDeepLineGap" />
+
+        <TextView style="@style/AppWidget.NavigationItem"
+            android:id="@+id/btn_setting"
+            android:drawableStart="@drawable/ic_settings_grey600_24dp"
+            android:drawableLeft="@drawable/ic_settings_grey600_24dp"
+            android:text="@string/setting" />
 
         <TextView style="@style/AppWidget.NavigationItem"
             android:id="@+id/btn_about"

@@ -41,6 +41,11 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <activity
+            android:name=".ui.activity.SettingActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+        <activity
             android:name=".ui.activity.LicenseActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
