@@ -14,6 +14,10 @@
 
 如果涉及侵权，请邮件告知删除。
 
+## Screenshots ##
+
+![Image](art/screenshot_s.png)
+
 ## Author ##
 
 TakWolf
