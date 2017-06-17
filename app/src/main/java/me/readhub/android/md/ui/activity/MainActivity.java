@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnPageChange;
 import me.readhub.android.md.R;
 import me.readhub.android.md.ui.adapter.MainPagerAdapter;
 import me.readhub.android.md.ui.base.FullLayoutActivity;
@@ -68,11 +67,6 @@ public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnO
             fabBackToTop.hide();
         }
         lastAppBarVerticalOffset = verticalOffset;
-    }
-
-    @OnPageChange(R.id.view_pager)
-    void onPageSelected(int position) {
-        fabBackToTop.show();
     }
 
     @OnClick(R.id.fab_back_to_top)
