@@ -25,13 +25,13 @@ import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.util.HandlerUtils;
 
-public class DetailActivity extends StatusBarActivity implements SwipeRefreshLayout.OnRefreshListener, Runnable, Toolbar.OnMenuItemClickListener {
+public class ArticleActivity extends StatusBarActivity implements SwipeRefreshLayout.OnRefreshListener, Runnable, Toolbar.OnMenuItemClickListener {
 
     private static final String EXTRA_TITLE = "title";
     private static final String EXTRA_URL = "url";
 
     public static void start(@NonNull Activity activity, @NonNull String title, @NonNull String url) {
-        Intent intent = new Intent(activity, DetailActivity.class);
+        Intent intent = new Intent(activity, ArticleActivity.class);
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_URL, url);
         activity.startActivity(intent);
@@ -56,7 +56,7 @@ public class DetailActivity extends StatusBarActivity implements SwipeRefreshLay
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_article);
         ButterKnife.bind(this);
 
         title = getIntent().getStringExtra(EXTRA_TITLE);

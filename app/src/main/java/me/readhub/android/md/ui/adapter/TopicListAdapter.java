@@ -20,7 +20,8 @@ import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.entity.Topic;
 import me.readhub.android.md.model.entity.TopicNews;
-import me.readhub.android.md.ui.activity.DetailActivity;
+import me.readhub.android.md.ui.activity.ArticleActivity;
+import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.util.FormatUtils;
 
 public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.TopicViewHolder> {
@@ -170,7 +171,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
 
         @OnClick(R.id.btn_item)
         void onBtnItemClick() {
-            DetailActivity.start(activity, news.getTitle(), news.getMobileUrl());
+            Navigator.openArticle(activity, news.getTitle(), news.getMobileUrl());
         }
 
     }

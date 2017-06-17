@@ -17,7 +17,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.entity.News;
-import me.readhub.android.md.ui.activity.DetailActivity;
+import me.readhub.android.md.ui.activity.ArticleActivity;
+import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.util.FormatUtils;
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHolder> {
@@ -83,7 +84,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
         @OnClick(R.id.btn_item)
         void onBtnItemClick() {
-            DetailActivity.start(activity, news.getTitle(), news.getUrl());
+            Navigator.openArticle(activity, news.getTitle(), news.getUrl());
         }
 
     }

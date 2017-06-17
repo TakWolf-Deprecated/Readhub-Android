@@ -59,7 +59,7 @@ public class MainActivity extends FullLayoutActivity {
 
     @OnClick(R.id.btn_setting)
     void onBtnSettingClick() {
-        startActivity(new Intent(this, AboutActivity.class));
+        startActivity(new Intent(this, SettingActivity.class));
     }
 
     @OnClick(R.id.btn_about)
