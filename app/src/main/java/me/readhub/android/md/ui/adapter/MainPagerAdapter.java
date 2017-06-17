@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.readhub.android.md.R;
+import me.readhub.android.md.ui.fragment.MainTabFragment;
 import me.readhub.android.md.ui.fragment.NewsListFragment;
 import me.readhub.android.md.ui.fragment.TopicListFragment;
-import me.readhub.android.md.ui.view.IBackToTopView;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
@@ -23,7 +23,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     };
 
     private final Context context;
-    private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<MainTabFragment> fragmentList = new ArrayList<>();
 
     public MainPagerAdapter(@NonNull Context context, @NonNull FragmentManager manager) {
         super(manager);
@@ -50,7 +50,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     }
 
     public void backToTop(int position) {
-         ((IBackToTopView) fragmentList.get(position)).backToTop();
+         fragmentList.get(position).backToTop();
     }
 
 }

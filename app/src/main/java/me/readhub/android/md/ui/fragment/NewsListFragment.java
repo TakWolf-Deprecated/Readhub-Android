@@ -2,7 +2,6 @@ package me.readhub.android.md.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -20,11 +19,10 @@ import me.readhub.android.md.presenter.contract.INewsListPresenter;
 import me.readhub.android.md.presenter.implement.NewsListPresenter;
 import me.readhub.android.md.ui.adapter.NewsListAdapter;
 import me.readhub.android.md.ui.util.ToastUtils;
-import me.readhub.android.md.ui.view.IBackToTopView;
 import me.readhub.android.md.ui.view.INewsListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
 
-public class NewsListFragment extends Fragment implements IBackToTopView, SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, INewsListView {
+public class NewsListFragment extends MainTabFragment implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, INewsListView {
 
     public static final int TAB_NEWS = 0;
     public static final int TAB_TECHNEWS = 1;
@@ -80,11 +78,6 @@ public class NewsListFragment extends Fragment implements IBackToTopView, SwipeR
     }
 
     @Override
-    public void backToTop() {
-        recyclerView.smoothScrollToPosition(0);
-    }
-
-    @Override
     public void onRefresh() {
         newsListPresenter.refreshNewsListAsyncTask();
     }
@@ -121,6 +114,11 @@ public class NewsListFragment extends Fragment implements IBackToTopView, SwipeR
     public void onLoadMoreError(@NonNull String message) {
         ToastUtils.with(getContext()).show(message);
         loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
+    }
+
+    @Override
+    public void backToTop() {
+        recyclerView.smoothScrollToPosition(0);
     }
 
 }
