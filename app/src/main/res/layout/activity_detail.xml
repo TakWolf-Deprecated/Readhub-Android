@@ -27,7 +27,6 @@
                 android:id="@+id/progress_bar"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_marginBottom="2dp"
                 android:layout_gravity="bottom"
                 android:indeterminateOnly="false"
                 android:progressDrawable="@drawable/web_view_progress"
