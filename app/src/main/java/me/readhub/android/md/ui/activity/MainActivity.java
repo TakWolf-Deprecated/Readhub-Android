@@ -16,11 +16,12 @@ import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.ui.adapter.MainPagerAdapter;
 import me.readhub.android.md.ui.base.FullLayoutActivity;
+import me.readhub.android.md.ui.listener.FloatingActionButtonBehaviorListener;
 import me.readhub.android.md.ui.listener.NavigationOpenClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.ui.util.ToastUtils;
 
-public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnOffsetChangedListener {
+public class MainActivity extends FullLayoutActivity {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -42,7 +43,6 @@ public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnO
 
     private MainPagerAdapter pagerAdapter;
 
-    private int lastAppBarVerticalOffset = 0;
     private long firstBackPressedTime = 0;
 
     @Override
@@ -53,7 +53,7 @@ public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnO
 
         drawerLayout.setDrawerShadow(R.drawable.navigation_drawer_shadow, GravityCompat.START);
         toolbar.setNavigationOnClickListener(new NavigationOpenClickListener(drawerLayout));
-        appBarLayout.addOnOffsetChangedListener(this);
+        appBarLayout.addOnOffsetChangedListener(new FloatingActionButtonBehaviorListener.ForAppBarLayout(fabBackToTop));
 
         pagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
@@ -74,16 +74,6 @@ public class MainActivity extends FullLayoutActivity implements AppBarLayout.OnO
                 super.onBackPressed();
             }
         }
-    }
-
-    @Override
-    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-        if (verticalOffset > lastAppBarVerticalOffset) {
-            fabBackToTop.show();
-        } else if (verticalOffset < lastAppBarVerticalOffset) {
-            fabBackToTop.hide();
-        }
-        lastAppBarVerticalOffset = verticalOffset;
     }
 
     @OnClick(R.id.fab_back_to_top)
