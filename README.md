@@ -18,6 +18,26 @@
 
 ![Image](art/screenshot_s.png)
 
+## Dependencies ##
+
+- [Butter Knife](https://github.com/JakeWharton/butterknife)
+
+- [Gson](https://github.com/google/gson)
+
+- [Joda-Time](http://www.joda.org/joda-time)
+
+- [Joda-Time-Android](https://github.com/dlew/joda-time-android)
+
+- [OkHttp](https://github.com/square/okhttp)
+
+- [Retrofit](https://github.com/square/retrofit)
+
+- [Glide](https://github.com/bumptech/glide)
+
+- [Android-HeaderAndFooterRecyclerView](https://github.com/TakWolf/Android-HeaderAndFooterRecyclerView)
+
+- [materialish-progress](https://github.com/pnikosis/materialish-progress)
+
 ## Author ##
 
 TakWolf
