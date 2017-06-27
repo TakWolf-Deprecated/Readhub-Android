@@ -38,6 +38,8 @@
 
 - [materialish-progress](https://github.com/pnikosis/materialish-progress)
 
+- [Material design icons](https://github.com/google/material-design-icons)
+
 ## Author ##
 
 TakWolf
