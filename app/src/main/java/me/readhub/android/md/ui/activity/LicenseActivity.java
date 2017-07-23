@@ -1,6 +1,7 @@
 package me.readhub.android.md.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ public class LicenseActivity extends StatusBarActivity {
     TextView tvLicense;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_license);
         ButterKnife.bind(this);
