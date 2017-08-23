@@ -30,6 +30,7 @@
                 android:layout_gravity="bottom"
                 android:indeterminateOnly="false"
                 android:progressDrawable="@drawable/web_view_progress"
+                android:background="#40ffffff"
                 android:visibility="gone"
                 tools:progress="50"
                 tools:visibility="visible" />
