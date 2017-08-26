@@ -3,8 +3,6 @@ package me.readhub.android.md.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -17,7 +15,6 @@ import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.ui.adapter.MainPagerAdapter;
 import me.readhub.android.md.ui.base.FullLayoutActivity;
-import me.readhub.android.md.ui.listener.FloatingActionButtonBehaviorListener;
 import me.readhub.android.md.ui.listener.NavigationOpenClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.ui.util.ToastUtils;
@@ -27,9 +24,6 @@ public class MainActivity extends FullLayoutActivity {
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    @BindView(R.id.app_bar_layout)
-    AppBarLayout appBarLayout;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -38,9 +32,6 @@ public class MainActivity extends FullLayoutActivity {
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-
-    @BindView(R.id.fab_back_to_top)
-    FloatingActionButton fabBackToTop;
 
     private MainPagerAdapter pagerAdapter;
 
@@ -54,7 +45,6 @@ public class MainActivity extends FullLayoutActivity {
 
         drawerLayout.setDrawerShadow(R.drawable.navigation_drawer_shadow, GravityCompat.START);
         toolbar.setNavigationOnClickListener(new NavigationOpenClickListener(drawerLayout));
-        appBarLayout.addOnOffsetChangedListener(new FloatingActionButtonBehaviorListener.ForAppBarLayout(fabBackToTop));
 
         pagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
@@ -75,12 +65,6 @@ public class MainActivity extends FullLayoutActivity {
                 super.onBackPressed();
             }
         }
-    }
-
-    @OnClick(R.id.fab_back_to_top)
-    void onBtnBackToTopClick() {
-        appBarLayout.setExpanded(true, true);
-        pagerAdapter.backToTop(viewPager.getCurrentItem());
     }
 
     @OnClick(R.id.btn_visit_official_web)
