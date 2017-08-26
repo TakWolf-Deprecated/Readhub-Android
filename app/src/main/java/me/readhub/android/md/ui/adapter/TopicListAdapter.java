@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +77,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
         ImageView imgExpandState;
 
         @BindView(R.id.layout_expand)
-        View layoutExpand;
+        ExpandableLayout layoutExpand;
 
         @BindView(R.id.layout_source)
         ViewGroup layoutSource;
@@ -97,7 +99,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
             tvInfo.setText(activity.getString(R.string.time_$_source_count, FormatUtils.getRelativeTimeSpanString(topic.getPublishDate()), topic.getNewsList().size()));
             boolean expand = expandStateMap.get(position, false);
             imgExpandState.setImageResource(expand ? R.drawable.ic_expand_less_grey600_18dp : R.drawable.ic_expand_more_grey600_18dp);
-            layoutExpand.setVisibility(expand ? View.VISIBLE : View.GONE);
+            layoutExpand.setExpanded(expand, false);
             adjustLayoutSourceChildren(topic.getNewsList().size());
             for (int i = 0; i < layoutSource.getChildCount(); i++) {
                 TopicNews news = topic.getNewsList().get(i);
@@ -138,11 +140,11 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
             if (expandStateMap.get(position, false)) {
                 expandStateMap.put(position, false);
                 imgExpandState.setImageResource(R.drawable.ic_expand_more_grey600_18dp);
-                layoutExpand.setVisibility(View.GONE);
+                layoutExpand.setExpanded(false);
             } else {
                 expandStateMap.put(position, true);
                 imgExpandState.setImageResource(R.drawable.ic_expand_less_grey600_18dp);
-                layoutExpand.setVisibility(View.VISIBLE);
+                layoutExpand.setExpanded(true);
             }
         }
 

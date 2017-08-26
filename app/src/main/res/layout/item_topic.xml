@@ -62,7 +62,7 @@
 
     </LinearLayout>
 
-    <FrameLayout
+    <net.cachapa.expandablelayout.ExpandableLayout
         android:id="@+id/layout_expand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
 
         <View style="@style/AppWidget.ShadowGap" />
 
-    </FrameLayout>
+    </net.cachapa.expandablelayout.ExpandableLayout>
 
     <View style="@style/AppWidget.ShadowGap" />
 

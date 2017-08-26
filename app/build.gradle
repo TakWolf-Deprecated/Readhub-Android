@@ -51,4 +51,5 @@ dependencies {
 
     compile 'com.takwolf.android:hf-recyclerview:0.1.0'
     compile 'com.pnikosis:materialish-progress:1.7'
+    compile 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
 }
