@@ -8,7 +8,4 @@
     <color name="list_divider">#ffe0e0e0</color>
     <color name="translucent_status">#66000000</color>
 
-    <color name="selectable_item_background_general_normal">@android:color/white</color>
-    <color name="selectable_item_background_general_pressed">#ffeeeeee</color>
-
 </resources>

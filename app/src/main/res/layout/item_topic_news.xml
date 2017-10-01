@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:orientation="vertical"
-    android:background="@drawable/selectable_item_background_general">
+    android:background="?attr/selectableItemBackground"
+    tools:background="@android:color/white">
 
     <TextView
         android:id="@+id/tv_title"
