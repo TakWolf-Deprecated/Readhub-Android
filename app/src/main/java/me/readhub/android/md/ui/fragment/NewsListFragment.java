@@ -14,12 +14,14 @@ import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.entity.News;
 import me.readhub.android.md.model.entity.Pageable;
 import me.readhub.android.md.presenter.contract.INewsListPresenter;
 import me.readhub.android.md.presenter.implement.NewsListPresenter;
 import me.readhub.android.md.ui.adapter.NewsListAdapter;
+import me.readhub.android.md.ui.listener.BackToTopAndRefreshButtonBehaviorListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.INewsListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
@@ -45,6 +47,9 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
     @BindView(R.id.recycler_view)
     HeaderAndFooterRecyclerView recyclerView;
 
+    @BindView(R.id.btn_back_to_top_and_refresh)
+    View btnBackToTopAndRefresh;
+
     private int tab;
 
     private LoadMoreFooter loadMoreFooter;
@@ -66,6 +71,7 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
         tab = getArguments().getInt(EXTRA_TAB, TAB_NEWS);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addOnScrollListener(new BackToTopAndRefreshButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
 
         loadMoreFooter = new LoadMoreFooter(getContext(), recyclerView, this);
 
@@ -88,6 +94,15 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
     @Override
     public void onLoadMore() {
         newsListPresenter.loadMoreNewsListAsyncTask(listAdapter.getNewsList().get(listAdapter.getNewsList().size() - 1).getPublishDate().getMillis());
+    }
+
+    @OnClick(R.id.btn_back_to_top_and_refresh)
+    void onBtnBackToTopAndRefreshClick() {
+        recyclerView.scrollToPosition(0);
+        if (!refreshLayout.isRefreshing()) {
+            refreshLayout.setRefreshing(true);
+            onRefresh();
+        }
     }
 
     @Override

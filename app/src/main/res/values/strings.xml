@@ -6,6 +6,7 @@
 
     <string name="press_back_again_to_exit">再按一次退出</string>
 
+    <string name="back_to_top_and_refresh">回到顶部并刷新</string>
     <string name="load_more_finished">已经到底啦</string>
     <string name="load_more_failed">加载失败，点击重试</string>
 

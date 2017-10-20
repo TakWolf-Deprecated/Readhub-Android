@@ -66,4 +66,21 @@
         <item name="android:layout_marginBottom">8dp</item>
     </style>
 
+    <!-- Button -->
+
+    <style name="AppWidget.BackToTopAndRefreshBtn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:drawableStart">@drawable/ic_refresh_theme_18dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:text">@string/back_to_top_and_refresh</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/back_to_top_and_refresh_btn_bg</item>
+        <item name="android:elevation">@dimen/app_bar_elevation</item>
+    </style>
+
 </resources>

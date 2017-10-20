@@ -14,12 +14,14 @@ import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.entity.Pageable;
 import me.readhub.android.md.model.entity.Topic;
 import me.readhub.android.md.presenter.contract.ITopicListPresenter;
 import me.readhub.android.md.presenter.implement.TopicListPresenter;
 import me.readhub.android.md.ui.adapter.TopicListAdapter;
+import me.readhub.android.md.ui.listener.BackToTopAndRefreshButtonBehaviorListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.ITopicListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
@@ -31,6 +33,9 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
 
     @BindView(R.id.recycler_view)
     HeaderAndFooterRecyclerView recyclerView;
+
+    @BindView(R.id.btn_back_to_top_and_refresh)
+    View btnBackToTopAndRefresh;
 
     private LoadMoreFooter loadMoreFooter;
     private TopicListAdapter listAdapter;
@@ -49,6 +54,7 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
         ButterKnife.bind(this, view);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addOnScrollListener(new BackToTopAndRefreshButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
 
         loadMoreFooter = new LoadMoreFooter(getContext(), recyclerView, this);
 
@@ -71,6 +77,15 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
     @Override
     public void onLoadMore() {
         topicListPresenter.loadMoreTopicListAsyncTask(listAdapter.getTopicList().get(listAdapter.getTopicList().size() - 1).getOrder());
+    }
+
+    @OnClick(R.id.btn_back_to_top_and_refresh)
+    void onBtnBackToTopAndRefreshClick() {
+        recyclerView.scrollToPosition(0);
+        if (!refreshLayout.isRefreshing()) {
+            refreshLayout.setRefreshing(true);
+            onRefresh();
+        }
     }
 
     @Override
