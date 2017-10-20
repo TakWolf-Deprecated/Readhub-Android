@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:orientation="vertical"
-                android:background="@android:color/white">
+                android:background="@android:color/white"
+                android:elevation="@dimen/item_elevation">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -52,13 +53,14 @@
 
             </LinearLayout>
 
-            <View style="@style/AppWidget.ShadowGap" />
+            <View style="@style/AppWidget.ItemGap" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@android:color/white">
+                android:background="@android:color/white"
+                android:elevation="@dimen/item_elevation">
 
                 <LinearLayout
                     android:id="@+id/btn_version"
@@ -145,14 +147,14 @@
 
             </LinearLayout>
 
-            <View style="@style/AppWidget.ShadowGap" />
+            <View style="@style/AppWidget.ItemGap" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@android:color/white">
-
+                android:background="@android:color/white"
+                android:elevation="@dimen/item_elevation">
 
                 <TextView
                     android:id="@+id/btn_open_source_license"
@@ -166,7 +168,7 @@
 
             </LinearLayout>
 
-            <View style="@style/AppWidget.ShadowGap" />
+            <View style="@style/AppWidget.ItemGap" />
 
             <TextView
                 android:layout_width="match_parent"

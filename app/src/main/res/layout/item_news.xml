@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
-        android:background="@android:color/white">
+        android:background="@android:color/white"
+        android:elevation="@dimen/item_elevation">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,6 +57,6 @@
 
     </FrameLayout>
 
-    <View style="@style/AppWidget.ShadowGap" />
+    <View style="@style/AppWidget.ItemGap" />
 
 </LinearLayout>

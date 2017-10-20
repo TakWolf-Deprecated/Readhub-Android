@@ -42,19 +42,6 @@
         <item name="android:layout_height">8dp</item>
     </style>
 
-    <style name="AppWidget.ShadowGap">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/shadow_gap_elevation</item>
-        <item name="android:layout_marginBottom">@dimen/shadow_gap_margin_fill</item>
-        <item name="android:background">@drawable/gap_shadow</item>
-    </style>
-
-    <style name="AppWidget.ShadowGap.Opposite">
-        <item name="android:layout_marginTop">@dimen/shadow_gap_margin_fill</item>
-        <item name="android:layout_marginBottom">0dp</item>
-        <item name="android:background">@drawable/gap_shadow_opposite</item>
-    </style>
-
     <!-- Navigation -->
 
     <style name="AppWidget.NavigationItem">
