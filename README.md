@@ -36,8 +36,6 @@
 
 - [Retrofit](https://github.com/square/retrofit)
 
-- [Glide](https://github.com/bumptech/glide)
-
 - [Android-HeaderAndFooterRecyclerView](https://github.com/TakWolf/Android-HeaderAndFooterRecyclerView)
 
 - [materialish-progress](https://github.com/pnikosis/materialish-progress)
