@@ -39,21 +39,25 @@ public final class BackToTopAndRefreshButtonBehaviorListener {
 
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            updateState(recyclerView);
+            updateState(recyclerView, 0);
         }
 
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            updateState(recyclerView);
+            updateState(recyclerView, dy);
         }
 
-        private void updateState(@NonNull RecyclerView recyclerView) {
+        private void updateState(@NonNull RecyclerView recyclerView, int dy) {
             RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
             if (layoutManager instanceof LinearLayoutManager) {
                 if (((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition() == 0) {
                     hide();
                 } else {
-                    show();
+                    if (dy > 0) {
+                        show();
+                    } else if (dy < 0) {
+                        hide();
+                    }
                 }
             } else {
                 hide();
