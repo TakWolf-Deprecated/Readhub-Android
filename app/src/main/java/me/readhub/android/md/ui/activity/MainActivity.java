@@ -43,7 +43,6 @@ public class MainActivity extends FullLayoutActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        drawerLayout.setDrawerShadow(R.drawable.navigation_drawer_shadow, GravityCompat.START);
         toolbar.setNavigationOnClickListener(new NavigationOpenClickListener(drawerLayout));
 
         pagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
