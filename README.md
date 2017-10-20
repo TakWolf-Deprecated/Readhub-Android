@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/TakWolf/Readhub-Android.svg?branch=master)](https://travis-ci.org/TakWolf/Readhub-Android)
 [![Release](https://img.shields.io/github/release/TakWolf/Readhub-Android.svg)](https://github.com/TakWolf/Readhub-Android/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com)
-[![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg)](https://android-arsenal.com/api?level=14)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/github/license/TakWolf/Readhub-Android.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![Logo](app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)

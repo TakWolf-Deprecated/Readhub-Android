@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId 'me.readhub.android.md'
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode Integer.parseInt(new Date().format('yyyyMMdd'))
         versionName '1.1.0-dev.1'
