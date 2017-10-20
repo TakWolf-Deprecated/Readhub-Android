@@ -10,7 +10,7 @@
 
 [Readhub](https://readhub.me) 第三方 Android 客户端。Material Design 风格。
 
-非官方，数据来源于官方API接口。
+自用，非官方。数据来源于官方API接口。
 
 如果涉及侵权，请邮件告知删除。
 
