@@ -74,7 +74,7 @@ public class MainActivity extends FullLayoutActivity {
 
     @OnClick(R.id.btn_share_to_friends)
     void onBtnShareToFriendsClick() {
-        String text = getString(R.string.official_home_page_content) + "\n" + getString(R.string.app_name) + "\n" + getString(R.string.app_summary);
+        String text = getString(R.string.official_home_page_content) + "\n" + getString(R.string.app_name) + "\n" + getString(R.string.app_slogan);
         Navigator.openShare(this, text);
     }
 

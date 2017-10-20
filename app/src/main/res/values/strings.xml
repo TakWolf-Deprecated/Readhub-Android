@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Readhub</string>
-    <string name="app_summary">每天3分钟，科技要闻一览</string>
+    <string name="app_slogan">科技新闻，每天 3 分钟</string>
 
     <string name="press_back_again_to_exit">再按一次退出</string>
 
