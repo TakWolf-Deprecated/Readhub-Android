@@ -21,12 +21,12 @@ import android.widget.ProgressBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.readhub.android.md.R;
-import me.readhub.android.md.ui.base.StatusBarActivity;
+import me.readhub.android.md.ui.base.BaseActivity;
 import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.util.HandlerUtils;
 
-public class ArticleActivity extends StatusBarActivity implements SwipeRefreshLayout.OnRefreshListener, Runnable, Toolbar.OnMenuItemClickListener {
+public class ArticleActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, Runnable, Toolbar.OnMenuItemClickListener {
 
     private static final String EXTRA_TITLE = "title";
     private static final String EXTRA_URL = "url";

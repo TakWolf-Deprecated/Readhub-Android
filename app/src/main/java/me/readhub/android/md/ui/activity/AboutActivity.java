@@ -11,11 +11,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.readhub.android.md.BuildConfig;
 import me.readhub.android.md.R;
-import me.readhub.android.md.ui.base.StatusBarActivity;
+import me.readhub.android.md.ui.base.BaseActivity;
 import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 
-public class AboutActivity extends StatusBarActivity {
+public class AboutActivity extends BaseActivity {
 
     public static final String VERSION_TEXT = BuildConfig.VERSION_NAME + "-build-" + BuildConfig.VERSION_CODE;
 

@@ -10,12 +10,12 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.readhub.android.md.R;
-import me.readhub.android.md.ui.base.StatusBarActivity;
+import me.readhub.android.md.ui.base.BaseActivity;
 import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.util.ResUtils;
 
-public class LicenseActivity extends StatusBarActivity {
+public class LicenseActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

@@ -10,10 +10,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.storage.shared.SettingShared;
-import me.readhub.android.md.ui.base.StatusBarActivity;
+import me.readhub.android.md.ui.base.BaseActivity;
 import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
 
-public class SettingActivity extends StatusBarActivity {
+public class SettingActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
