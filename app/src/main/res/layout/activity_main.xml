@@ -10,7 +10,7 @@
 
         <include layout="@layout/activity_main_center" />
 
-        <me.readhub.android.md.ui.widget.AdaptStatusBarView
+        <me.readhub.android.md.ui.widget.StatusBarView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimaryDark" />
@@ -25,7 +25,7 @@
 
         <include layout="@layout/activity_main_nav" />
 
-        <me.readhub.android.md.ui.widget.AdaptStatusBarView
+        <me.readhub.android.md.ui.widget.StatusBarView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/translucent_status" />

@@ -1,9 +1,6 @@
 package me.readhub.android.md.util;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.support.annotation.AttrRes;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.RawRes;
 
@@ -21,19 +18,9 @@ public final class ResUtils {
         return resourceId > 0 ? context.getResources().getDimensionPixelSize(resourceId) : 0;
     }
 
-    @ColorInt
-    public static int getThemeAttrColor(@NonNull Context context, @AttrRes int attr) {
-        TypedArray a = context.obtainStyledAttributes(null, new int[]{attr});
-        try {
-            return a.getColor(0, 0);
-        } finally {
-            a.recycle();
-        }
-    }
-
     public static String getRawString(@NonNull Context context, @RawRes int rawId) throws IOException {
         InputStream is = context.getResources().openRawResource(rawId);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
         StringBuilder sb = new StringBuilder();
         String line;
         while ((line = reader.readLine()) != null) {
