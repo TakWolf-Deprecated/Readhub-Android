@@ -3,6 +3,7 @@ package me.readhub.android.md.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.ITopicListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
 
-public class TopicListFragment extends MainTabFragment implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, ITopicListView {
+public class TopicListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, ITopicListView {
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -100,11 +101,6 @@ public class TopicListFragment extends MainTabFragment implements SwipeRefreshLa
     public void onLoadMoreError(@NonNull String message) {
         ToastUtils.with(getContext()).show(message);
         loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
-    }
-
-    @Override
-    public void backToTop() {
-        recyclerView.smoothScrollToPosition(0);
     }
 
 }
