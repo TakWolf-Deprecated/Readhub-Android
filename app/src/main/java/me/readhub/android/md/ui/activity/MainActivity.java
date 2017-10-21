@@ -1,18 +1,22 @@
 package me.readhub.android.md.ui.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.readhub.android.md.R;
+import me.readhub.android.md.model.storage.shared.SettingShared;
 import me.readhub.android.md.ui.adapter.MainPagerAdapter;
 import me.readhub.android.md.ui.base.FullLayoutActivity;
 import me.readhub.android.md.ui.listener.NavigationOpenClickListener;
@@ -49,6 +53,26 @@ public class MainActivity extends FullLayoutActivity {
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(pagerAdapter.getCount());
         tabLayout.setupWithViewPager(viewPager);
+
+        if (SettingShared.isShowOpenArticleAdvice(this)) {
+            SettingShared.markShowOpenArticleAdvice(this);
+            try {
+                getPackageManager().getApplicationInfo("com.android.chrome", PackageManager.GET_UNINSTALLED_PACKAGES);
+                SettingShared.setOpenArticleInApp(this, false);
+                new AlertDialog.Builder(this)
+                        .setMessage(R.string.open_article_advice_message)
+                        .setPositiveButton(R.string.ok, null)
+                        .setNeutralButton(R.string.setting, new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                            }
+
+                        })
+                        .show();
+            } catch (PackageManager.NameNotFoundException ignored) {}
+        }
     }
 
     @Override
