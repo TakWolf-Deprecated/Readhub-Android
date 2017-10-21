@@ -11,9 +11,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Interpolator;
 
-public final class BackToTopAndRefreshButtonBehaviorListener {
+public final class FloatingTipButtonBehaviorListener {
 
-    private BackToTopAndRefreshButtonBehaviorListener() {}
+    private FloatingTipButtonBehaviorListener() {}
 
     public static class ForRecyclerView extends RecyclerView.OnScrollListener {
 

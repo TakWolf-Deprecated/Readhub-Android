@@ -22,7 +22,7 @@ import me.readhub.android.md.presenter.contract.ITopicListPresenter;
 import me.readhub.android.md.presenter.implement.TopicListPresenter;
 import me.readhub.android.md.ui.adapter.GapItemDecoration;
 import me.readhub.android.md.ui.adapter.TopicListAdapter;
-import me.readhub.android.md.ui.listener.BackToTopAndRefreshButtonBehaviorListener;
+import me.readhub.android.md.ui.listener.FloatingTipButtonBehaviorListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.ITopicListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
@@ -56,7 +56,7 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new GapItemDecoration(getContext()));
-        recyclerView.addOnScrollListener(new BackToTopAndRefreshButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
+        recyclerView.addOnScrollListener(new FloatingTipButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
 
         loadMoreFooter = new LoadMoreFooter(getContext(), recyclerView, this);
 

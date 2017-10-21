@@ -22,7 +22,7 @@ import me.readhub.android.md.presenter.contract.INewsListPresenter;
 import me.readhub.android.md.presenter.implement.NewsListPresenter;
 import me.readhub.android.md.ui.adapter.GapItemDecoration;
 import me.readhub.android.md.ui.adapter.NewsListAdapter;
-import me.readhub.android.md.ui.listener.BackToTopAndRefreshButtonBehaviorListener;
+import me.readhub.android.md.ui.listener.FloatingTipButtonBehaviorListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.INewsListView;
 import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
@@ -73,7 +73,7 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new GapItemDecoration(getContext()));
-        recyclerView.addOnScrollListener(new BackToTopAndRefreshButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
+        recyclerView.addOnScrollListener(new FloatingTipButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
 
         loadMoreFooter = new LoadMoreFooter(getContext(), recyclerView, this);
 
