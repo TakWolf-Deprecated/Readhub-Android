@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:elevation="@dimen/item_elevation">
 
     <FrameLayout
         android:id="@+id/btn_item"
@@ -74,7 +77,8 @@
         android:id="@+id/layout_expand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/colorPrimary"
+        app:el_expanded="true">
 
         <LinearLayout
             android:id="@+id/layout_source"
@@ -89,7 +93,5 @@
         </LinearLayout>
 
     </net.cachapa.expandablelayout.ExpandableLayout>
-
-    <Space style="@style/AppWidget.Gap" />
 
 </LinearLayout>

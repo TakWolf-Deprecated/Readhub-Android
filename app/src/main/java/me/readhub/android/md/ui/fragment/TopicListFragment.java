@@ -20,6 +20,7 @@ import me.readhub.android.md.model.entity.Pageable;
 import me.readhub.android.md.model.entity.Topic;
 import me.readhub.android.md.presenter.contract.ITopicListPresenter;
 import me.readhub.android.md.presenter.implement.TopicListPresenter;
+import me.readhub.android.md.ui.adapter.GapItemDecoration;
 import me.readhub.android.md.ui.adapter.TopicListAdapter;
 import me.readhub.android.md.ui.listener.BackToTopAndRefreshButtonBehaviorListener;
 import me.readhub.android.md.ui.util.ToastUtils;
@@ -54,6 +55,7 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
         ButterKnife.bind(this, view);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addItemDecoration(new GapItemDecoration(getContext()));
         recyclerView.addOnScrollListener(new BackToTopAndRefreshButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
 
         loadMoreFooter = new LoadMoreFooter(getContext(), recyclerView, this);
