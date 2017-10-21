@@ -72,6 +72,24 @@ public final class BackToTopAndRefreshButtonBehaviorListener {
             return animState == ANIM_STATE_HIDING || animState == ANIM_STATE_HIDDEN;
         }
 
+        private final Animator.AnimatorListener showAnimatorListener = new AnimatorListenerAdapter() {
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animState = ANIM_STATE_SHOWN;
+            }
+
+        };
+
+        private final Animator.AnimatorListener hideAnimatorListener = new AnimatorListenerAdapter() {
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animState = ANIM_STATE_HIDDEN;
+            }
+
+        };
+
         private void show() {
             if (isOrWillBeShown()) {
                 return;
@@ -83,14 +101,7 @@ public final class BackToTopAndRefreshButtonBehaviorListener {
                     .translationY(0.0f)
                     .setDuration(SHOW_HIDE_ANIM_DURATION)
                     .setInterpolator(SHOW_ANIM_INTERPOLATOR)
-                    .setListener(new AnimatorListenerAdapter() {
-
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            animState = ANIM_STATE_SHOWN;
-                        }
-
-                    });
+                    .setListener(showAnimatorListener);
         }
 
         private void hide() {
@@ -104,14 +115,7 @@ public final class BackToTopAndRefreshButtonBehaviorListener {
                     .translationY(-movingDistance)
                     .setDuration(SHOW_HIDE_ANIM_DURATION)
                     .setInterpolator(HIDE_ANIM_INTERPOLATOR)
-                    .setListener(new AnimatorListenerAdapter() {
-
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            animState = ANIM_STATE_HIDDEN;
-                        }
-
-                    });
+                    .setListener(hideAnimatorListener);
         }
 
     }
