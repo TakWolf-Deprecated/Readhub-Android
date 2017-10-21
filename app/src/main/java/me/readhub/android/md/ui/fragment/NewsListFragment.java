@@ -95,7 +95,7 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onLoadMore() {
-        newsListPresenter.loadMoreNewsListAsyncTask(listAdapter.getNewsList().get(listAdapter.getNewsList().size() - 1).getPublishDate().getMillis());
+        newsListPresenter.loadMoreNewsListAsyncTask(listAdapter.getNewsList().get(listAdapter.getNewsList().size() - 1).getPublishDate().toInstant().toEpochMilli());
     }
 
     @OnClick(R.id.btn_back_to_top_and_refresh)

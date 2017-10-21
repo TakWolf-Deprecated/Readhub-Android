@@ -2,7 +2,8 @@ package me.readhub.android.md.util;
 
 import android.support.annotation.NonNull;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.Duration;
+import org.threeten.bp.OffsetDateTime;
 
 public final class FormatUtils {
 
@@ -15,8 +16,8 @@ public final class FormatUtils {
     private static final long MONTH = 31 * DAY;
     private static final long YEAR = 12 * MONTH;
 
-    public static String getRelativeTimeSpanString(@NonNull DateTime dateTime) {
-        long offset = System.currentTimeMillis() - dateTime.getMillis();
+    public static String getRelativeTimeSpanString(@NonNull OffsetDateTime offsetDateTime) {
+        long offset = Duration.between(offsetDateTime, OffsetDateTime.now()).toMillis();
         if (offset > YEAR) {
             return (offset / YEAR) + "年前";
         } else if (offset > MONTH) {

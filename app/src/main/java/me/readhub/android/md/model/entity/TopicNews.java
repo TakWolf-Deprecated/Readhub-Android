@@ -1,6 +1,6 @@
 package me.readhub.android.md.model.entity;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 public class TopicNews {
 
@@ -20,7 +20,7 @@ public class TopicNews {
 
     private long duplicateId;
 
-    private DateTime publishDate;
+    private OffsetDateTime publishDate;
 
     public long getId() {
         return id;
@@ -86,11 +86,11 @@ public class TopicNews {
         this.duplicateId = duplicateId;
     }
 
-    public DateTime getPublishDate() {
+    public OffsetDateTime getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(DateTime publishDate) {
+    public void setPublishDate(OffsetDateTime publishDate) {
         this.publishDate = publishDate;
     }
 

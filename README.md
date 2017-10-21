@@ -28,9 +28,7 @@
 
 - [Gson](https://github.com/google/gson)
 
-- [Joda-Time](http://www.joda.org/joda-time)
-
-- [Joda-Time-Android](https://github.com/dlew/joda-time-android)
+- [ThreeTenABP](https://github.com/JakeWharton/ThreeTenABP)
 
 - [OkHttp](https://github.com/square/okhttp)
 

@@ -33,16 +33,11 @@ Copyright (C) 2010 Google Inc.
 Licensed under the Apache License, Version 2.0 (the "License").
 
 ====================================
-Joda-Time
+ThreeTenABP
 ====================================
-http://www.joda.org/joda-time
+https://github.com/JakeWharton/ThreeTenABP
 
-Licensed under the Apache License, Version 2.0 (the "License").
-
-====================================
-Joda-Time-Android
-====================================
-https://github.com/dlew/joda-time-android
+Copyright (C) 2015 Jake Wharton
 
 Licensed under the Apache License, Version 2.0 (the "License").
 

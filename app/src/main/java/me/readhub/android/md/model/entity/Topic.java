@@ -2,7 +2,7 @@ package me.readhub.android.md.model.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class Topic {
 
     private String id;
 
-    private DateTime createdAt;
+    private OffsetDateTime createdAt;
 
     private TopicNelData nelData;
 
@@ -19,7 +19,7 @@ public class Topic {
 
     private long order;
 
-    private DateTime publishDate;
+    private OffsetDateTime publishDate;
 
     @SerializedName("relatedTopicArray")
     private List<Object> relatedTopicList;
@@ -28,7 +28,7 @@ public class Topic {
 
     private String title;
 
-    private DateTime updatedAt;
+    private OffsetDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -38,11 +38,11 @@ public class Topic {
         this.id = id;
     }
 
-    public DateTime getCreatedAt() {
+    public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(DateTime createdAt) {
+    public void setCreatedAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -70,11 +70,11 @@ public class Topic {
         this.order = order;
     }
 
-    public DateTime getPublishDate() {
+    public OffsetDateTime getPublishDate() {
         return publishDate == null ? getUpdatedAt() : publishDate; // TODO 发布时间有可能为空？
     }
 
-    public void setPublishDate(DateTime publishDate) {
+    public void setPublishDate(OffsetDateTime publishDate) {
         this.publishDate = publishDate;
     }
 
@@ -102,11 +102,11 @@ public class Topic {
         this.title = title;
     }
 
-    public DateTime getUpdatedAt() {
+    public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(DateTime updatedAt) {
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

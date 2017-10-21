@@ -2,7 +2,7 @@ package me.readhub.android.md.app;
 
 import android.app.Application;
 
-import net.danlew.android.joda.JodaTimeAndroid;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class AppController extends Application {
 
@@ -10,7 +10,7 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
 
-        JodaTimeAndroid.init(this);
+        AndroidThreeTen.init(this);
     }
 
 }
