@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.pnikosis.materialishprogress.ProgressWheel
-        android:id="@+id/progress_wheel"
+    <ProgressBar
+        android:id="@+id/progress_bar"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_gravity="center"
         android:layout_margin="16dp"
         android:visibility="invisible"
-        app:matProg_barColor="?attr/colorPrimary"
-        app:matProg_progressIndeterminate="true"
-        app:matProg_barWidth="3dp"
         tools:visibility="visible" />
 
     <TextView

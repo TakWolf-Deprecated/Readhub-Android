@@ -7,9 +7,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.pnikosis.materialishprogress.ProgressWheel;
 import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 
 import java.lang.annotation.Retention;
@@ -38,8 +38,8 @@ public class LoadMoreFooter {
 
     }
 
-    @BindView(R.id.progress_wheel)
-    ProgressWheel progressWheel;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
 
     @BindView(R.id.tv_text)
     TextView tvText;
@@ -83,36 +83,31 @@ public class LoadMoreFooter {
             this.state = state;
             switch (state) {
                 case STATE_DISABLED:
-                    progressWheel.setVisibility(View.INVISIBLE);
-                    progressWheel.stopSpinning();
+                    progressBar.setVisibility(View.INVISIBLE);
                     tvText.setVisibility(View.INVISIBLE);
                     tvText.setText(null);
                     tvText.setClickable(false);
                     break;
                 case STATE_LOADING:
-                    progressWheel.setVisibility(View.VISIBLE);
-                    progressWheel.spin();
+                    progressBar.setVisibility(View.VISIBLE);
                     tvText.setVisibility(View.INVISIBLE);
                     tvText.setText(null);
                     tvText.setClickable(false);
                     break;
                 case STATE_FINISHED:
-                    progressWheel.setVisibility(View.INVISIBLE);
-                    progressWheel.stopSpinning();
+                    progressBar.setVisibility(View.INVISIBLE);
                     tvText.setVisibility(View.VISIBLE);
                     tvText.setText(R.string.load_more_finished);
                     tvText.setClickable(false);
                     break;
                 case STATE_ENDLESS:
-                    progressWheel.setVisibility(View.INVISIBLE);
-                    progressWheel.stopSpinning();
+                    progressBar.setVisibility(View.INVISIBLE);
                     tvText.setVisibility(View.VISIBLE);
                     tvText.setText(null);
                     tvText.setClickable(true);
                     break;
                 case STATE_FAILED:
-                    progressWheel.setVisibility(View.INVISIBLE);
-                    progressWheel.stopSpinning();
+                    progressBar.setVisibility(View.INVISIBLE);
                     tvText.setVisibility(View.VISIBLE);
                     tvText.setText(R.string.load_more_failed);
                     tvText.setClickable(true);

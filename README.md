@@ -38,8 +38,6 @@
 
 - [Android-HeaderAndFooterRecyclerView](https://github.com/TakWolf/Android-HeaderAndFooterRecyclerView)
 
-- [materialish-progress](https://github.com/pnikosis/materialish-progress)
-
 - [ExpandableLayout](https://github.com/cachapa/ExpandableLayout)
 
 - [Material design icons](https://github.com/google/material-design-icons)
