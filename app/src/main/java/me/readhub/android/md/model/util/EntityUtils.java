@@ -33,8 +33,6 @@ public final class EntityUtils {
                 .appendPattern("yyyy-MM-dd HH:mm:ss")
                 .toFormatter();
 
-        private static final ZoneOffset zoneOffsetCompat = OffsetDateTime.now().getOffset();
-
         @Override
         public JsonElement serialize(OffsetDateTime src, Type typeOfSrc, JsonSerializationContext context) {
             return new JsonPrimitive(src.toString());
@@ -47,7 +45,7 @@ public final class EntityUtils {
             try {
                 return OffsetDateTime.parse(src);
             } catch (DateTimeParseException e) {
-                return OffsetDateTime.of(LocalDateTime.parse(src, formatterCompat), zoneOffsetCompat);
+                return OffsetDateTime.of(LocalDateTime.parse(src, formatterCompat), ZoneOffset.UTC);
             }
         }
 
