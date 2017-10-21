@@ -57,6 +57,6 @@
 
     </FrameLayout>
 
-    <View style="@style/AppWidget.ItemGap" />
+    <Space style="@style/AppWidget.ItemGap" />
 
 </LinearLayout>
