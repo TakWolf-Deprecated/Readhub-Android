@@ -16,9 +16,9 @@ import me.readhub.android.md.ui.fragment.TopicListFragment;
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
     private static final int[] titleIds = {
-        R.string.tab_topic,
-        R.string.tab_news,
-        R.string.tab_technews
+            R.string.tab_topic,
+            R.string.tab_news,
+            R.string.tab_technews
     };
 
     private final Context context;
