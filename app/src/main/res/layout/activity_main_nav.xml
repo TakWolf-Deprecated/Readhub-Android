@@ -44,7 +44,7 @@
 
         </LinearLayout>
 
-        <Space style="@style/AppWidget.ItemGap" />
+        <Space style="@style/AppWidget.Gap" />
 
         <TextView style="@style/AppWidget.NavigationItem"
             android:id="@+id/btn_visit_official_web"
@@ -68,7 +68,7 @@
             android:drawableStart="@drawable/ic_info_grey600_24dp"
             android:text="@string/about" />
 
-        <Space style="@style/AppWidget.ItemGap" />
+        <Space style="@style/AppWidget.Gap" />
 
     </LinearLayout>
 

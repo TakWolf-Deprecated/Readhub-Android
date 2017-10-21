@@ -6,4 +6,6 @@
 
     <dimen name="item_elevation">2dp</dimen>
 
+    <dimen name="gap_size">8dp</dimen>
+
 </resources>

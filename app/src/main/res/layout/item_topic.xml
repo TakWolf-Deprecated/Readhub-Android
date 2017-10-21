@@ -90,6 +90,6 @@
 
     </net.cachapa.expandablelayout.ExpandableLayout>
 
-    <Space style="@style/AppWidget.ItemGap" />
+    <Space style="@style/AppWidget.Gap" />
 
 </LinearLayout>

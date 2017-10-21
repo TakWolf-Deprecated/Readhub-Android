@@ -53,7 +53,7 @@
 
             </LinearLayout>
 
-            <Space style="@style/AppWidget.ItemGap" />
+            <Space style="@style/AppWidget.Gap" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,7 +147,7 @@
 
             </LinearLayout>
 
-            <Space style="@style/AppWidget.ItemGap" />
+            <Space style="@style/AppWidget.Gap" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -168,7 +168,7 @@
 
             </LinearLayout>
 
-            <Space style="@style/AppWidget.ItemGap" />
+            <Space style="@style/AppWidget.Gap" />
 
             <TextView
                 android:layout_width="match_parent"
