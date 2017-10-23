@@ -3,7 +3,7 @@ package me.readhub.android.md.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
-import android.support.v7.widget.Toolbar;
+import android.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

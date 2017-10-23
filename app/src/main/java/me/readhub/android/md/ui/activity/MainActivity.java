@@ -10,7 +10,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
+import android.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

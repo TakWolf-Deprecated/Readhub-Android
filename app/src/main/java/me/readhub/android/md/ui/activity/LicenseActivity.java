@@ -2,8 +2,8 @@ package me.readhub.android.md.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.io.IOException;
 

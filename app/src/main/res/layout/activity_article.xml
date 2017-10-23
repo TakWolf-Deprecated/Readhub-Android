@@ -16,12 +16,12 @@
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
-            <android.support.v7.widget.Toolbar
+            <Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                android:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+                android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"
