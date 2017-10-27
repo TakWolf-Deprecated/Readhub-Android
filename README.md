@@ -18,6 +18,8 @@
 
 - [FIR.im](https://fir.im/Readhub)
 
+- [酷安](https://www.coolapk.com/apk/165044)
+
 ## Screenshots ##
 
 ![Image](art/screenshot_s.png)
