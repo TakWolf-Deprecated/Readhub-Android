@@ -18,7 +18,7 @@
 
 - [FIR.im](https://fir.im/Readhub)
 
-- [酷安](https://www.coolapk.com/apk/165044)
+- [酷安](https://www.coolapk.com/apk/me.readhub.android.md)
 
 ## Screenshots ##
 
