@@ -49,7 +49,7 @@ public class MainActivity extends FullLayoutActivity {
 
         toolbar.setNavigationOnClickListener(new NavigationOpenClickListener(drawerLayout));
 
-        pagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
+        pagerAdapter = new MainPagerAdapter(this, viewPager);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(pagerAdapter.getCount());
         tabLayout.setupWithViewPager(viewPager);

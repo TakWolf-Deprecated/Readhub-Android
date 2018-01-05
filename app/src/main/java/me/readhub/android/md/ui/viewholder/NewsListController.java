@@ -1,14 +1,12 @@
-package me.readhub.android.md.ui.fragment;
+package me.readhub.android.md.ui.viewholder;
 
-import android.os.Bundle;
+import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 
@@ -25,22 +23,11 @@ import me.readhub.android.md.ui.adapter.NewsListAdapter;
 import me.readhub.android.md.ui.listener.FloatingTipButtonBehaviorListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.INewsListView;
-import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
 
-public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, INewsListView {
+public class NewsListController extends Controller implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, INewsListView {
 
     public static final int TAB_NEWS = 0;
     public static final int TAB_TECHNEWS = 1;
-    private static final String EXTRA_TAB = "tab";
-
-    @NonNull
-    public static NewsListFragment newInstance(int tab) {
-        NewsListFragment fragment = new NewsListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(EXTRA_TAB, tab);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -51,41 +38,40 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
     @BindView(R.id.btn_back_to_top_and_refresh)
     View btnBackToTopAndRefresh;
 
-    private int tab;
+    private final Activity activity;
+    private final View contentView;
 
-    private LoadMoreFooter loadMoreFooter;
-    private NewsListAdapter listAdapter;
+    private final LoadMoreFooter loadMoreFooter;
+    private final NewsListAdapter listAdapter;
 
-    private INewsListPresenter newsListPresenter;
+    private final INewsListPresenter newsListPresenter;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_news_list, container, false);
-    }
+    public NewsListController(@NonNull Activity activity, @NonNull ViewPager viewPager, int tab) {
+        this.activity = activity;
+        contentView = LayoutInflater.from(activity).inflate(R.layout.fragment_news_list, viewPager, false);
+        ButterKnife.bind(this, contentView);
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-
-        tab = getArguments().getInt(EXTRA_TAB, TAB_NEWS);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new GapItemDecoration(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        recyclerView.addItemDecoration(new GapItemDecoration(activity));
         recyclerView.addOnScrollListener(new FloatingTipButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
 
-        loadMoreFooter = new LoadMoreFooter(getContext(), recyclerView, this);
+        loadMoreFooter = new LoadMoreFooter(activity, recyclerView, this);
 
-        listAdapter = new NewsListAdapter(getActivity());
+        listAdapter = new NewsListAdapter(activity);
         recyclerView.setAdapter(listAdapter);
 
-        newsListPresenter = new NewsListPresenter(getActivity(), this, tab);
+        newsListPresenter = new NewsListPresenter(activity, this, tab);
 
         refreshLayout.setColorSchemeResources(R.color.color_primary);
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setRefreshing(true);
         onRefresh();
+    }
+
+    @NonNull
+    @Override
+    public View getContentView() {
+        return contentView;
     }
 
     @Override
@@ -118,7 +104,7 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onRefreshError(@NonNull String message) {
-        ToastUtils.with(getContext()).show(message);
+        ToastUtils.with(activity).show(message);
         refreshLayout.setRefreshing(false);
     }
 
@@ -132,7 +118,7 @@ public class NewsListFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onLoadMoreError(@NonNull String message) {
-        ToastUtils.with(getContext()).show(message);
+        ToastUtils.with(activity).show(message);
         loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
     }
 

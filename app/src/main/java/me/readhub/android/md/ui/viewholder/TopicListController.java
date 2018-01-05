@@ -1,14 +1,12 @@
-package me.readhub.android.md.ui.fragment;
+package me.readhub.android.md.ui.viewholder;
 
-import android.os.Bundle;
+import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 
@@ -25,9 +23,8 @@ import me.readhub.android.md.ui.adapter.TopicListAdapter;
 import me.readhub.android.md.ui.listener.FloatingTipButtonBehaviorListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.ITopicListView;
-import me.readhub.android.md.ui.viewholder.LoadMoreFooter;
 
-public class TopicListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, ITopicListView {
+public class TopicListController extends Controller implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, ITopicListView {
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -38,37 +35,40 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
     @BindView(R.id.btn_back_to_top_and_refresh)
     View btnBackToTopAndRefresh;
 
-    private LoadMoreFooter loadMoreFooter;
-    private TopicListAdapter listAdapter;
+    private final Activity activity;
+    private final View contentView;
 
-    private ITopicListPresenter topicListPresenter;
+    private final LoadMoreFooter loadMoreFooter;
+    private final TopicListAdapter listAdapter;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_topic_list, container, false);
-    }
+    private final ITopicListPresenter topicListPresenter;
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+    public TopicListController(@NonNull Activity activity, @NonNull ViewPager viewPager) {
+        this.activity = activity;
+        contentView = LayoutInflater.from(activity).inflate(R.layout.fragment_topic_list, viewPager, false);
+        ButterKnife.bind(this, contentView);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new GapItemDecoration(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        recyclerView.addItemDecoration(new GapItemDecoration(activity));
         recyclerView.addOnScrollListener(new FloatingTipButtonBehaviorListener.ForRecyclerView(btnBackToTopAndRefresh));
 
-        loadMoreFooter = new LoadMoreFooter(getContext(), recyclerView, this);
+        loadMoreFooter = new LoadMoreFooter(activity, recyclerView, this);
 
-        listAdapter = new TopicListAdapter(getActivity());
+        listAdapter = new TopicListAdapter(activity);
         recyclerView.setAdapter(listAdapter);
 
-        topicListPresenter = new TopicListPresenter(getActivity(), this);
+        topicListPresenter = new TopicListPresenter(activity, this);
 
         refreshLayout.setColorSchemeResources(R.color.color_primary);
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setRefreshing(true);
         onRefresh();
+    }
+
+    @NonNull
+    @Override
+    public View getContentView() {
+        return contentView;
     }
 
     @Override
@@ -102,7 +102,7 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public void onRefreshError(@NonNull String message) {
-        ToastUtils.with(getContext()).show(message);
+        ToastUtils.with(activity).show(message);
         refreshLayout.setRefreshing(false);
     }
 
@@ -116,7 +116,7 @@ public class TopicListFragment extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public void onLoadMoreError(@NonNull String message) {
-        ToastUtils.with(getContext()).show(message);
+        ToastUtils.with(activity).show(message);
         loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
     }
 

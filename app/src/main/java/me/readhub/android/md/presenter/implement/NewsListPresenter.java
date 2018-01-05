@@ -8,8 +8,8 @@ import me.readhub.android.md.model.entity.News;
 import me.readhub.android.md.model.entity.Pageable;
 import me.readhub.android.md.presenter.contract.INewsListPresenter;
 import me.readhub.android.md.presenter.contract.IPageablePresenter;
-import me.readhub.android.md.ui.fragment.NewsListFragment;
 import me.readhub.android.md.ui.view.INewsListView;
+import me.readhub.android.md.ui.viewholder.NewsListController;
 import retrofit2.Call;
 
 public class NewsListPresenter implements INewsListPresenter {
@@ -27,7 +27,7 @@ public class NewsListPresenter implements INewsListPresenter {
     @Override
     public void refreshNewsListAsyncTask() {
         Call<Pageable<News>> call;
-        if (tab == NewsListFragment.TAB_NEWS) {
+        if (tab == NewsListController.TAB_NEWS) {
             call = ApiClient.service.getNewsList(null, PAGE_SIZE);
         } else {
             call = ApiClient.service.getTechNewsList(null, PAGE_SIZE);
@@ -38,7 +38,7 @@ public class NewsListPresenter implements INewsListPresenter {
     @Override
     public void loadMoreNewsListAsyncTask(long lastCursor) {
         Call<Pageable<News>> call;
-        if (tab == NewsListFragment.TAB_NEWS) {
+        if (tab == NewsListController.TAB_NEWS) {
             call = ApiClient.service.getNewsList(lastCursor, PAGE_SIZE);
         } else {
             call = ApiClient.service.getTechNewsList(lastCursor, PAGE_SIZE);
