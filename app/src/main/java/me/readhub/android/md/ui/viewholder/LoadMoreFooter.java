@@ -112,7 +112,7 @@ public class LoadMoreFooter {
                     tvText.setClickable(true);
                     break;
                 default:
-                    throw new AssertionError("Unknow load more state.");
+                    throw new AssertionError("Unknown load more state.");
             }
         }
     }
