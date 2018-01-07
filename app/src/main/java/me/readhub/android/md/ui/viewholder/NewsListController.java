@@ -1,6 +1,7 @@
 package me.readhub.android.md.ui.viewholder;
 
 import android.app.Activity;
+import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +33,10 @@ public class NewsListController extends Controller implements SwipeRefreshLayout
     public static final int TAB_NEWS = 0;
     public static final int TAB_TECHNEWS = 1;
 
+    @IntDef({TAB_NEWS, TAB_TECHNEWS})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface Tab {}
+
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
 
@@ -46,7 +54,7 @@ public class NewsListController extends Controller implements SwipeRefreshLayout
 
     private final INewsListPresenter newsListPresenter;
 
-    public NewsListController(@NonNull Activity activity, @NonNull ViewPager viewPager, int tab) {
+    public NewsListController(@NonNull Activity activity, @NonNull ViewPager viewPager, @Tab int tab) {
         this.activity = activity;
         contentView = LayoutInflater.from(activity).inflate(R.layout.fragment_news_list, viewPager, false);
         ButterKnife.bind(this, contentView);

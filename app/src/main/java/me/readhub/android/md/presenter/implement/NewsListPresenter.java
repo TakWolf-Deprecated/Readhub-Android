@@ -16,10 +16,12 @@ public class NewsListPresenter implements INewsListPresenter {
 
     private static final int PAGE_SIZE = 20;
 
+    @NewsListController.Tab
     private final int tab;
+
     private final IPageablePresenter<News> pageablePresenter;
 
-    public NewsListPresenter(@NonNull Activity activity, @NonNull INewsListView newsListView, int tab) {
+    public NewsListPresenter(@NonNull Activity activity, @NonNull INewsListView newsListView, @NewsListController.Tab int tab) {
         this.tab = tab;
         pageablePresenter = new PageablePresenter<>(activity, newsListView);
     }
@@ -29,8 +31,10 @@ public class NewsListPresenter implements INewsListPresenter {
         Call<Pageable<News>> call;
         if (tab == NewsListController.TAB_NEWS) {
             call = ApiClient.service.getNewsList(null, PAGE_SIZE);
-        } else {
+        } else if (tab == NewsListController.TAB_TECHNEWS) {
             call = ApiClient.service.getTechNewsList(null, PAGE_SIZE);
+        } else {
+            throw new AssertionError("Unknown tab type.");
         }
         pageablePresenter.refreshAsyncTask(call);
     }
@@ -40,8 +44,10 @@ public class NewsListPresenter implements INewsListPresenter {
         Call<Pageable<News>> call;
         if (tab == NewsListController.TAB_NEWS) {
             call = ApiClient.service.getNewsList(lastCursor, PAGE_SIZE);
-        } else {
+        } else if (tab == NewsListController.TAB_TECHNEWS) {
             call = ApiClient.service.getTechNewsList(lastCursor, PAGE_SIZE);
+        } else {
+            throw new AssertionError("Unknown tab type.");
         }
         pageablePresenter.loadMoreAsyncTask(call);
     }
