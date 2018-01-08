@@ -45,7 +45,7 @@ public class TopicListController extends Controller implements SwipeRefreshLayou
 
     public TopicListController(@NonNull Activity activity, @NonNull ViewPager viewPager) {
         this.activity = activity;
-        contentView = LayoutInflater.from(activity).inflate(R.layout.fragment_topic_list, viewPager, false);
+        contentView = LayoutInflater.from(activity).inflate(R.layout.controller_topic_list, viewPager, false);
         ButterKnife.bind(this, contentView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));

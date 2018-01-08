@@ -56,7 +56,7 @@ public class NewsListController extends Controller implements SwipeRefreshLayout
 
     public NewsListController(@NonNull Activity activity, @NonNull ViewPager viewPager, @Tab int tab) {
         this.activity = activity;
-        contentView = LayoutInflater.from(activity).inflate(R.layout.fragment_news_list, viewPager, false);
+        contentView = LayoutInflater.from(activity).inflate(R.layout.controller_news_list, viewPager, false);
         ButterKnife.bind(this, contentView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
