@@ -48,7 +48,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.update(newsList.get(position));
+        holder.bind(newsList.get(position));
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,12 +64,12 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
         private News news;
 
-        ViewHolder(View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void update(@NonNull News news) {
+        void bind(@NonNull News news) {
             this.news = news;
             tvTitle.setText(news.getTitle());
             tvSummary.setText(news.getSummary());

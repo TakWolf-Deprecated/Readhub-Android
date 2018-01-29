@@ -59,7 +59,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
 
     @Override
     public void onBindViewHolder(TopicViewHolder holder, int position) {
-        holder.update(topicList.get(position), position);
+        holder.bind(topicList.get(position), position);
     }
 
     class TopicViewHolder extends RecyclerView.ViewHolder {
@@ -85,12 +85,12 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
         private Topic topic;
         private int position;
 
-        TopicViewHolder(View itemView) {
+        TopicViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void update(@NonNull Topic topic, int position) {
+        void bind(@NonNull Topic topic, int position) {
             this.topic = topic;
             this.position = position;
             tvTitle.setText(topic.getTitle());
@@ -109,7 +109,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
                     holder = new NewsViewHolder(view);
                     view.setTag(holder);
                 }
-                holder.update(news);
+                holder.bind(news);
             }
         }
 
@@ -164,7 +164,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
             ButterKnife.bind(this, itemView);
         }
 
-        void update(@NonNull TopicNews news) {
+        void bind(@NonNull TopicNews news) {
             this.news = news;
             tvTitle.setText(news.getTitle());
             tvInfo.setText(activity.getString(R.string.site_name___time, news.getSiteName(), FormatUtils.getRelativeTimeSpanString(news.getPublishDate())));
