@@ -6,15 +6,21 @@ public class News {
 
     private long id;
 
-    private String siteName;
-
-    private String authorName;
-
-    private String url;
+    private String title;
 
     private String summary;
 
-    private String title;
+    private String summaryAuto;
+
+    private String url;
+
+    private String mobileUrl;
+
+    private String siteName;
+
+    private String language;
+
+    private String authorName;
 
     private OffsetDateTime publishDate;
 
@@ -26,28 +32,12 @@ public class News {
         this.id = id;
     }
 
-    public String getSiteName() {
-        return siteName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setSiteName(String siteName) {
-        this.siteName = siteName;
-    }
-
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getSummary() {
@@ -58,12 +48,52 @@ public class News {
         this.summary = summary;
     }
 
-    public String getTitle() {
-        return title;
+    public String getSummaryAuto() {
+        return summaryAuto;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSummaryAuto(String summaryAuto) {
+        this.summaryAuto = summaryAuto;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getMobileUrl() {
+        return mobileUrl;
+    }
+
+    public void setMobileUrl(String mobileUrl) {
+        this.mobileUrl = mobileUrl;
+    }
+
+    public String getSiteName() {
+        return siteName;
+    }
+
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     public OffsetDateTime getPublishDate() {
