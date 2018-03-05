@@ -27,4 +27,10 @@ public interface ApiService {
             @Query("pageSize") int pageSize
     );
 
+    @GET("blockchain")
+    Call<Pageable<News>> getBlockChainNewsList(
+            @Query("lastCursor") Long lastCursor,
+            @Query("pageSize") int pageSize
+    );
+
 }

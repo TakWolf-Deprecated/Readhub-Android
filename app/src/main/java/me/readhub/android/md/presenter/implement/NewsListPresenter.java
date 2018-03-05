@@ -33,6 +33,8 @@ public class NewsListPresenter implements INewsListPresenter {
             call = ApiClient.service.getNewsList(null, PAGE_SIZE);
         } else if (tab == NewsListController.TAB_TECHNEWS) {
             call = ApiClient.service.getTechNewsList(null, PAGE_SIZE);
+        } else if (tab == NewsListController.TAB_BLOCK_CHAIN) {
+            call = ApiClient.service.getBlockChainNewsList(null, PAGE_SIZE);
         } else {
             throw new AssertionError("Unknown tab type.");
         }
@@ -46,6 +48,8 @@ public class NewsListPresenter implements INewsListPresenter {
             call = ApiClient.service.getNewsList(lastCursor, PAGE_SIZE);
         } else if (tab == NewsListController.TAB_TECHNEWS) {
             call = ApiClient.service.getTechNewsList(lastCursor, PAGE_SIZE);
+        } else if (tab == NewsListController.TAB_BLOCK_CHAIN) {
+            call = ApiClient.service.getBlockChainNewsList(lastCursor, PAGE_SIZE);
         } else {
             throw new AssertionError("Unknown tab type.");
         }

@@ -21,7 +21,8 @@ public class MainPagerAdapter extends PagerAdapter {
     private static final int[] TITLE_IDS = {
             R.string.tab_topic,
             R.string.tab_news,
-            R.string.tab_technews
+            R.string.tab_technews,
+            R.string.tab_block_chain_news
     };
 
     private final Activity activity;
@@ -32,6 +33,7 @@ public class MainPagerAdapter extends PagerAdapter {
         controllerList.add(new TopicListController(activity, viewPager));
         controllerList.add(new NewsListController(activity, viewPager, NewsListController.TAB_NEWS));
         controllerList.add(new NewsListController(activity, viewPager, NewsListController.TAB_TECHNEWS));
+        controllerList.add(new NewsListController(activity, viewPager, NewsListController.TAB_BLOCK_CHAIN));
     }
 
     @Override

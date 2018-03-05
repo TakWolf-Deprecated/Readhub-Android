@@ -32,8 +32,9 @@ public class NewsListController extends Controller implements SwipeRefreshLayout
 
     public static final int TAB_NEWS = 0;
     public static final int TAB_TECHNEWS = 1;
+    public static final int TAB_BLOCK_CHAIN = 2;
 
-    @IntDef({TAB_NEWS, TAB_TECHNEWS})
+    @IntDef({TAB_NEWS, TAB_TECHNEWS, TAB_BLOCK_CHAIN})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Tab {}
 
