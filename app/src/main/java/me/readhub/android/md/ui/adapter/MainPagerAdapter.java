@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.readhub.android.md.R;
+import me.readhub.android.md.model.entity.News;
 import me.readhub.android.md.ui.viewholder.Controller;
 import me.readhub.android.md.ui.viewholder.NewsListController;
 import me.readhub.android.md.ui.viewholder.TopicListController;
@@ -31,9 +32,9 @@ public class MainPagerAdapter extends PagerAdapter {
     public MainPagerAdapter(@NonNull Activity activity, @NonNull ViewPager viewPager) {
         this.activity = activity;
         controllerList.add(new TopicListController(activity, viewPager));
-        controllerList.add(new NewsListController(activity, viewPager, NewsListController.TAB_NEWS));
-        controllerList.add(new NewsListController(activity, viewPager, NewsListController.TAB_TECHNEWS));
-        controllerList.add(new NewsListController(activity, viewPager, NewsListController.TAB_BLOCK_CHAIN));
+        controllerList.add(new NewsListController(activity, viewPager, News.TYPE_NEWS));
+        controllerList.add(new NewsListController(activity, viewPager, News.TYPE_TECHNEWS));
+        controllerList.add(new NewsListController(activity, viewPager, News.TYPE_BLOCKCHAIN));
     }
 
     @Override

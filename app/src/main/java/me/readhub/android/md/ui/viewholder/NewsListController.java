@@ -1,7 +1,6 @@
 package me.readhub.android.md.ui.viewholder;
 
 import android.app.Activity;
-import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,14 +25,6 @@ import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.ui.view.INewsListView;
 
 public class NewsListController extends Controller implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener, INewsListView {
-
-    public static final int TAB_NEWS = 0;
-    public static final int TAB_TECHNEWS = 1;
-    public static final int TAB_BLOCK_CHAIN = 2;
-
-    @IntDef({TAB_NEWS, TAB_TECHNEWS, TAB_BLOCK_CHAIN})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface Tab {}
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -55,7 +43,7 @@ public class NewsListController extends Controller implements SwipeRefreshLayout
 
     private final INewsListPresenter newsListPresenter;
 
-    public NewsListController(@NonNull Activity activity, @NonNull ViewPager viewPager, @Tab int tab) {
+    public NewsListController(@NonNull Activity activity, @NonNull ViewPager viewPager, @News.Type String type) {
         this.activity = activity;
         contentView = LayoutInflater.from(activity).inflate(R.layout.controller_news_list, viewPager, false);
         ButterKnife.bind(this, contentView);
@@ -69,7 +57,7 @@ public class NewsListController extends Controller implements SwipeRefreshLayout
         listAdapter = new NewsListAdapter(activity);
         recyclerView.setAdapter(listAdapter);
 
-        newsListPresenter = new NewsListPresenter(activity, this, tab);
+        newsListPresenter = new NewsListPresenter(activity, this, type);
 
         refreshLayout.setColorSchemeResources(R.color.color_primary);
         refreshLayout.setOnRefreshListener(this);

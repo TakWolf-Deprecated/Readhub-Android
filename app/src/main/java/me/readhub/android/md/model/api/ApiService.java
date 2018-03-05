@@ -5,6 +5,7 @@ import me.readhub.android.md.model.entity.Pageable;
 import me.readhub.android.md.model.entity.Topic;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -15,20 +16,9 @@ public interface ApiService {
             @Query("pageSize") int pageSize
     );
 
-    @GET("news")
+    @GET("{type}")
     Call<Pageable<News>> getNewsList(
-            @Query("lastCursor") Long lastCursor,
-            @Query("pageSize") int pageSize
-    );
-
-    @GET("technews")
-    Call<Pageable<News>> getTechNewsList(
-            @Query("lastCursor") Long lastCursor,
-            @Query("pageSize") int pageSize
-    );
-
-    @GET("blockchain")
-    Call<Pageable<News>> getBlockChainNewsList(
+            @Path("type") @News.Type String type,
             @Query("lastCursor") Long lastCursor,
             @Query("pageSize") int pageSize
     );

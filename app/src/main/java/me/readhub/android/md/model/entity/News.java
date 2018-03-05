@@ -1,8 +1,21 @@
 package me.readhub.android.md.model.entity;
 
+import android.support.annotation.StringDef;
+
 import org.threeten.bp.OffsetDateTime;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 public class News {
+
+    public static final String TYPE_NEWS = "news";
+    public static final String TYPE_TECHNEWS = "technews";
+    public static final String TYPE_BLOCKCHAIN = "blockchain";
+
+    @StringDef({TYPE_NEWS, TYPE_TECHNEWS, TYPE_BLOCKCHAIN})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface Type {}
 
     private long id;
 
