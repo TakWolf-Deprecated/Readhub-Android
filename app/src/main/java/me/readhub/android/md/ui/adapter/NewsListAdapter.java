@@ -72,8 +72,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         void bind(@NonNull News news) {
             this.news = news;
             tvTitle.setText(news.getTitle());
-            tvSummary.setText(news.getSummary());
-            tvSummary.setVisibility(TextUtils.isEmpty(news.getSummary()) ? View.GONE : View.VISIBLE);
+            tvSummary.setText(news.getSummaryAuto());
+            tvSummary.setVisibility(TextUtils.isEmpty(news.getSummaryAuto()) ? View.GONE : View.VISIBLE);
             if (TextUtils.isEmpty(news.getAuthorName())) {
                 tvInfo.setText(activity.getString(R.string.site_name___time, news.getSiteName(), FormatUtils.getRelativeTimeSpanString(news.getPublishDate())));
             } else {
@@ -83,7 +83,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
         @OnClick(R.id.btn_item)
         void onBtnItemClick() {
-            Navigator.openArticle(activity, news.getTitle(), news.getUrl());
+            Navigator.openArticle(activity, news.getTitle(), news.getMobileUrl());
         }
 
     }
