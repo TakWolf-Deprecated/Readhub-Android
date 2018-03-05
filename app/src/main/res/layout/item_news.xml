@@ -31,7 +31,6 @@
             android:layout_marginTop="8dp"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="14sp"
-            android:maxLines="4"
             android:ellipsize="end"
             tools:text="这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要这里是摘要" />
 

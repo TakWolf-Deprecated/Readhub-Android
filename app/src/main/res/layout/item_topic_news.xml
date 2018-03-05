@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="14sp"
-        android:maxLines="2"
         android:ellipsize="end"
         tools:text="这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题" />
 
