@@ -52,13 +52,14 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
         return topicList.size();
     }
 
+    @NonNull
     @Override
-    public TopicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TopicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new TopicViewHolder(inflater.inflate(R.layout.item_topic, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(TopicViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TopicViewHolder holder, int position) {
         holder.bind(topicList.get(position), position);
     }
 
