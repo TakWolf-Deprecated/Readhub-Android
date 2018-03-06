@@ -23,7 +23,7 @@ public class MainPagerAdapter extends PagerAdapter {
             R.string.tab_topic,
             R.string.tab_news,
             R.string.tab_technews,
-            R.string.tab_block_chain_news
+            R.string.tab_blockchain
     };
 
     private final Activity activity;
