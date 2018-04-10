@@ -1,4 +1,4 @@
-package me.readhub.android.md.ui.viewholder;
+package me.readhub.android.md.ui.holder;
 
 import android.content.Context;
 import android.support.annotation.IntDef;

@@ -13,9 +13,9 @@ import java.util.List;
 
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.entity.News;
-import me.readhub.android.md.ui.viewholder.Controller;
-import me.readhub.android.md.ui.viewholder.NewsListController;
-import me.readhub.android.md.ui.viewholder.TopicListController;
+import me.readhub.android.md.ui.holder.Controller;
+import me.readhub.android.md.ui.holder.NewsListController;
+import me.readhub.android.md.ui.holder.TopicListController;
 
 public class MainPagerAdapter extends PagerAdapter {
 
