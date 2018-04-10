@@ -1,4 +1,4 @@
-package me.readhub.android.md.ui.base;
+package me.readhub.android.md.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

@@ -10,7 +10,6 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.readhub.android.md.R;
-import me.readhub.android.md.ui.base.BaseActivity;
 import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
 import me.readhub.android.md.ui.util.ToastUtils;
 import me.readhub.android.md.util.ResUtils;

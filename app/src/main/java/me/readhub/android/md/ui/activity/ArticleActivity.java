@@ -21,7 +21,6 @@ import android.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.readhub.android.md.R;
-import me.readhub.android.md.ui.base.BaseActivity;
 import me.readhub.android.md.ui.listener.NavigationFinishClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.util.HandlerUtils;

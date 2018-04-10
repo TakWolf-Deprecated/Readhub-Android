@@ -1,4 +1,4 @@
-package me.readhub.android.md.ui.base;
+package me.readhub.android.md.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;

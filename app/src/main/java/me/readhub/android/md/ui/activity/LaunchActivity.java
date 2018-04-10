@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import me.readhub.android.md.R;
-import me.readhub.android.md.ui.base.BaseActivity;
 import me.readhub.android.md.ui.util.ActivityUtils;
 import me.readhub.android.md.util.HandlerUtils;
 

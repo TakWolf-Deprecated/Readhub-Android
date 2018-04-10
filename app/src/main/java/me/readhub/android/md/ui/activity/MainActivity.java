@@ -18,7 +18,6 @@ import butterknife.OnClick;
 import me.readhub.android.md.R;
 import me.readhub.android.md.model.storage.shared.SettingShared;
 import me.readhub.android.md.ui.adapter.MainPagerAdapter;
-import me.readhub.android.md.ui.base.FullLayoutActivity;
 import me.readhub.android.md.ui.listener.NavigationOpenClickListener;
 import me.readhub.android.md.ui.util.Navigator;
 import me.readhub.android.md.ui.util.ToastUtils;
