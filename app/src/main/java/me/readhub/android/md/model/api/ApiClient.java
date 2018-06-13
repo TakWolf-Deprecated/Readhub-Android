@@ -35,7 +35,7 @@ public final class ApiClient {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request.Builder builder = chain.request().newBuilder();
-                OkHttpHackUtils.addRequestHeaderLenient(builder, HEADER_USER_AGENT, ApiDefine.USER_AGENT);
+                OkHttpHackUtils.setRequestHeaderLenient(builder, HEADER_USER_AGENT, ApiDefine.USER_AGENT);
                 return chain.proceed(builder.build());
             }
 
