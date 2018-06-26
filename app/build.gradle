@@ -8,7 +8,7 @@ android {
         applicationId 'me.readhub.android.md'
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode Integer.parseInt(new Date().format('yyyyMMdd'))
+        versionCode Integer.valueOf(new Date().format('yyyyMMdd', TimeZone.getTimeZone('UTC')))
         versionName '1.1.1-dev.1'
     }
 
