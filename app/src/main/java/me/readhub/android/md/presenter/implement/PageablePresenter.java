@@ -3,8 +3,8 @@ package me.readhub.android.md.presenter.implement;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
-import me.readhub.android.md.model.api.ToastCallback;
 import me.readhub.android.md.model.api.ErrorResult;
+import me.readhub.android.md.model.api.ToastCallback;
 import me.readhub.android.md.model.entity.Pageable;
 import me.readhub.android.md.presenter.contract.IPageablePresenter;
 import me.readhub.android.md.ui.view.IPageableView;
