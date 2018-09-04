@@ -13,6 +13,7 @@ import retrofit2.Response;
 
 public class ErrorResult {
 
+    @NonNull
     public static ErrorResult from(@NonNull Response response) {
         ErrorResult errorResult = new ErrorResult();
         switch (response.code()) {
@@ -47,6 +48,7 @@ public class ErrorResult {
         return errorResult;
     }
 
+    @NonNull
     public static ErrorResult from(@NonNull Throwable t) {
         ErrorResult errorResult = new ErrorResult();
         if (t instanceof UnknownHostException || t instanceof ConnectException) {
