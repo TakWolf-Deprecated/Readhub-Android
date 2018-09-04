@@ -13,29 +13,26 @@ import retrofit2.Response;
 
 public class ErrorResult {
 
-    public static ErrorResult build(@NonNull Response response) {
+    public static ErrorResult from(@NonNull Response response) {
         ErrorResult errorResult = new ErrorResult();
         switch (response.code()) {
             case 400:
-                errorResult.setMessage("请求参数有误");
+                errorResult.setMessage("非法请求");
                 break;
             case 403:
-                errorResult.setMessage("请求被拒绝");
+                errorResult.setMessage("非法行为");
                 break;
             case 404:
-                errorResult.setMessage("资源未找到");
+                errorResult.setMessage("未找到资源");
                 break;
             case 405:
-                errorResult.setMessage("请求方式不被允许");
+                errorResult.setMessage("非法请求方式");
                 break;
             case 408:
                 errorResult.setMessage("请求超时");
                 break;
-            case 422:
-                errorResult.setMessage("请求语义错误");
-                break;
             case 500:
-                errorResult.setMessage("服务器逻辑错误");
+                errorResult.setMessage("服务器内部错误");
                 break;
             case 502:
                 errorResult.setMessage("服务器网关错误");
@@ -50,7 +47,7 @@ public class ErrorResult {
         return errorResult;
     }
 
-    public static ErrorResult build(@NonNull Throwable t) {
+    public static ErrorResult from(@NonNull Throwable t) {
         ErrorResult errorResult = new ErrorResult();
         if (t instanceof UnknownHostException || t instanceof ConnectException) {
             errorResult.setMessage("网络无法连接");

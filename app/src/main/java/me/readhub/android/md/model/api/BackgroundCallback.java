@@ -13,7 +13,7 @@ public class BackgroundCallback<Data> implements Callback<Data>, CallbackLifecyc
         if (response.isSuccessful()) {
             interrupt = onResultOk(response.code(), response.headers(), response.body());
         } else {
-            interrupt = onResultError(response.code(), response.headers(), ErrorResult.build(response));
+            interrupt = onResultError(response.code(), response.headers(), ErrorResult.from(response));
         }
         if (!interrupt) {
             onFinish();
@@ -26,7 +26,7 @@ public class BackgroundCallback<Data> implements Callback<Data>, CallbackLifecyc
         if (call.isCanceled()) {
             interrupt = onCallCancel();
         } else {
-            interrupt = onCallException(t, ErrorResult.build(t));
+            interrupt = onCallException(t, ErrorResult.from(t));
         }
         if (!interrupt) {
             onFinish();
@@ -39,7 +39,7 @@ public class BackgroundCallback<Data> implements Callback<Data>, CallbackLifecyc
     }
 
     @Override
-    public boolean onResultError(int code, Headers headers, ErrorResult error) {
+    public boolean onResultError(int code, Headers headers, ErrorResult errorResult) {
         return false;
     }
 
@@ -49,7 +49,7 @@ public class BackgroundCallback<Data> implements Callback<Data>, CallbackLifecyc
     }
 
     @Override
-    public boolean onCallException(Throwable t, ErrorResult error) {
+    public boolean onCallException(Throwable t, ErrorResult errorResult) {
         return false;
     }
 

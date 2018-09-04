@@ -3,7 +3,7 @@ package me.readhub.android.md.presenter.implement;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
-import me.readhub.android.md.model.api.DefaultCallback;
+import me.readhub.android.md.model.api.ToastCallback;
 import me.readhub.android.md.model.api.ErrorResult;
 import me.readhub.android.md.model.entity.Pageable;
 import me.readhub.android.md.presenter.contract.IPageablePresenter;
@@ -46,7 +46,7 @@ public class PageablePresenter<Data> implements IPageablePresenter<Data> {
     public void refreshAsyncTask(@NonNull Call<Pageable<Data>> call) {
         if (refreshCall == null) {
             refreshCall = call;
-            call.enqueue(new DefaultCallback<Pageable<Data>>(activity) {
+            call.enqueue(new ToastCallback<Pageable<Data>>(activity) {
 
                 @Override
                 public boolean onResultOk(int code, Headers headers, Pageable<Data> pageable) {
@@ -56,14 +56,8 @@ public class PageablePresenter<Data> implements IPageablePresenter<Data> {
                 }
 
                 @Override
-                public boolean onResultError(int code, Headers headers, ErrorResult error) {
-                    pageableView.onRefreshError(error.getMessage());
-                    return false;
-                }
-
-                @Override
-                public boolean onCallException(Throwable t, ErrorResult error) {
-                    pageableView.onRefreshError(error.getMessage());
+                public boolean onAnyError(ErrorResult errorResult) {
+                    pageableView.onRefreshError(errorResult.getMessage());
                     return false;
                 }
 
@@ -85,7 +79,7 @@ public class PageablePresenter<Data> implements IPageablePresenter<Data> {
     public void loadMoreAsyncTask(@NonNull Call<Pageable<Data>> call) {
         if (loadMoreCall == null) {
             loadMoreCall = call;
-            call.enqueue(new DefaultCallback<Pageable<Data>>(activity) {
+            call.enqueue(new ToastCallback<Pageable<Data>>(activity) {
 
                 @Override
                 public boolean onResultOk(int code, Headers headers, Pageable<Data> pageable) {
@@ -94,14 +88,8 @@ public class PageablePresenter<Data> implements IPageablePresenter<Data> {
                 }
 
                 @Override
-                public boolean onResultError(int code, Headers headers, ErrorResult error) {
-                    pageableView.onLoadMoreError(error.getMessage());
-                    return false;
-                }
-
-                @Override
-                public boolean onCallException(Throwable t, ErrorResult error) {
-                    pageableView.onLoadMoreError(error.getMessage());
+                public boolean onAnyError(ErrorResult errorResult) {
+                    pageableView.onLoadMoreError(errorResult.getMessage());
                     return false;
                 }
 

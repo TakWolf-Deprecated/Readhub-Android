@@ -2,6 +2,9 @@ package me.readhub.android.md.model.api;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
 
 import me.readhub.android.md.ui.util.ActivityUtils;
 import okhttp3.Headers;
@@ -11,25 +14,26 @@ import retrofit2.Response;
 
 public class ForegroundCallback<Data> implements Callback<Data>, CallbackLifecycle<Data> {
 
-    private final Activity activity;
+    private final WeakReference<Activity> activityWeakReference;
 
     public ForegroundCallback(@NonNull Activity activity) {
-        this.activity = activity;
+        activityWeakReference = new WeakReference<>(activity);
     }
 
-    @NonNull
+    @Nullable
     protected final Activity getActivity() {
-        return activity;
+        return activityWeakReference.get();
     }
 
     @Override
     public final void onResponse(Call<Data> call, Response<Data> response) {
+        Activity activity = getActivity();
         if (ActivityUtils.isAlive(activity)) {
             boolean interrupt;
             if (response.isSuccessful()) {
                 interrupt = onResultOk(response.code(), response.headers(), response.body());
             } else {
-                interrupt = onResultError(response.code(), response.headers(), ErrorResult.build(response));
+                interrupt = onResultError(response.code(), response.headers(), ErrorResult.from(response));
             }
             if (!interrupt) {
                 onFinish();
@@ -39,12 +43,13 @@ public class ForegroundCallback<Data> implements Callback<Data>, CallbackLifecyc
 
     @Override
     public final void onFailure(Call<Data> call, Throwable t) {
+        Activity activity = getActivity();
         if (ActivityUtils.isAlive(activity)) {
             boolean interrupt;
             if (call.isCanceled()) {
                 interrupt = onCallCancel();
             } else {
-                interrupt = onCallException(t, ErrorResult.build(t));
+                interrupt = onCallException(t, ErrorResult.from(t));
             }
             if (!interrupt) {
                 onFinish();
@@ -58,7 +63,7 @@ public class ForegroundCallback<Data> implements Callback<Data>, CallbackLifecyc
     }
 
     @Override
-    public boolean onResultError(int code, Headers headers, ErrorResult error) {
+    public boolean onResultError(int code, Headers headers, ErrorResult errorResult) {
         return false;
     }
 
@@ -68,7 +73,7 @@ public class ForegroundCallback<Data> implements Callback<Data>, CallbackLifecyc
     }
 
     @Override
-    public boolean onCallException(Throwable t, ErrorResult error) {
+    public boolean onCallException(Throwable t, ErrorResult errorResult) {
         return false;
     }
 
