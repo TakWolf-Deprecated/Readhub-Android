@@ -95,8 +95,8 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.Topi
             this.topic = topic;
             this.position = position;
             tvTitle.setText(topic.getTitle());
-            tvSummary.setText(topic.getSummary());
-            tvSummary.setVisibility(TextUtils.isEmpty(topic.getSummary()) ? View.GONE : View.VISIBLE);
+            tvSummary.setText(topic.getSummary().trim());
+            tvSummary.setVisibility(TextUtils.isEmpty(topic.getSummary().trim()) ? View.GONE : View.VISIBLE);
             tvInfo.setText(activity.getString(R.string.time___source_count, FormatUtils.getRelativeTimeSpanString(topic.getPublishDate()), topic.getNewsList().size()));
             boolean expand = expandStateMap.get(position, false);
             imgExpandState.setImageResource(expand ? R.drawable.ic_expand_less_grey600_18dp : R.drawable.ic_expand_more_grey600_18dp);
