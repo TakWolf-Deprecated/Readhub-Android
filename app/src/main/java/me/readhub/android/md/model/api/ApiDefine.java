@@ -8,7 +8,7 @@ public final class ApiDefine {
 
     private ApiDefine() {}
 
-    public static final String BASE_URL = "https://api.readhub.me/";
+    public static final String BASE_URL = "https://api.readhub.cn/";
     public static final String USER_AGENT = "Readhub-Material/" + BuildConfig.VERSION_NAME + " (Android " + Build.VERSION.RELEASE + "; " + Build.MODEL + "; " + Build.MANUFACTURER + ")";
 
 }
