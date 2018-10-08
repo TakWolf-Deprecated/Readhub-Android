@@ -29,18 +29,29 @@ public class TopicNelData {
 
     public static class Result {
 
-        private long entityId;
+        private String nerName;
+
+        private String entityId;
 
         private String entityName;
 
-        @SerializedName("data")
-        private List<Data> dataList;
+        private String entityType;
 
-        public long getEntityId() {
+        private String entityUniqueId;
+
+        public String getNerName() {
+            return nerName;
+        }
+
+        public void setNerName(String nerName) {
+            this.nerName = nerName;
+        }
+
+        public String getEntityId() {
             return entityId;
         }
 
-        public void setEntityId(long entityId) {
+        public void setEntityId(String entityId) {
             this.entityId = entityId;
         }
 
@@ -52,103 +63,22 @@ public class TopicNelData {
             this.entityName = entityName;
         }
 
-        public List<Data> getDataList() {
-            return dataList;
+        public String getEntityType() {
+            return entityType;
         }
 
-        public void setDataList(List<Data> dataList) {
-            this.dataList = dataList;
+        public void setEntityType(String entityType) {
+            this.entityType = entityType;
         }
 
-        public static class Data {
-
-            private String id;
-
-            private String title;
-
-            private String url;
-
-            private String mobileUrl;
-
-            @SerializedName("sources")
-            private List<Source> sourceList;
-
-            public String getId() {
-                return id;
-            }
-
-            public void setId(String id) {
-                this.id = id;
-            }
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
-            }
-
-            public String getUrl() {
-                return url;
-            }
-
-            public void setUrl(String url) {
-                this.url = url;
-            }
-
-            public String getMobileUrl() {
-                return mobileUrl;
-            }
-
-            public void setMobileUrl(String mobileUrl) {
-                this.mobileUrl = mobileUrl;
-            }
-
-            public List<Source> getSourceList() {
-                return sourceList;
-            }
-
-            public void setSourceList(List<Source> sourceList) {
-                this.sourceList = sourceList;
-            }
-
-            public static class Source {
-
-                private String name;
-
-                private String url;
-
-                private String mobileUrl;
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public String getUrl() {
-                    return url;
-                }
-
-                public void setUrl(String url) {
-                    this.url = url;
-                }
-
-                public String getMobileUrl() {
-                    return mobileUrl;
-                }
-
-                public void setMobileUrl(String mobileUrl) {
-                    this.mobileUrl = mobileUrl;
-                }
-
-            }
-
+        public String getEntityUniqueId() {
+            return entityUniqueId;
         }
 
+        public void setEntityUniqueId(String entityUniqueId) {
+            this.entityUniqueId = entityUniqueId;
+        }
+        
     }
 
 }
