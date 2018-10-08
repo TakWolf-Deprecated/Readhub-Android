@@ -8,7 +8,7 @@
 
 ![Logo](app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
 
-[Readhub](https://readhub.me) 第三方 Android 客户端。Material Design 风格。
+[Readhub](https://readhub.cn) 第三方 Android 客户端。Material Design 风格。
 
 自用，非官方。数据来源于官方API接口。
 
