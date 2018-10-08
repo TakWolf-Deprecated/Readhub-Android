@@ -78,7 +78,7 @@ public class TopicNelData {
         public void setEntityUniqueId(String entityUniqueId) {
             this.entityUniqueId = entityUniqueId;
         }
-        
+
     }
 
 }
