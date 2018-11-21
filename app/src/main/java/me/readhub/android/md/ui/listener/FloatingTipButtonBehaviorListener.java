@@ -17,7 +17,7 @@ public final class FloatingTipButtonBehaviorListener {
 
     public static class ForRecyclerView extends RecyclerView.OnScrollListener {
 
-        private static final int SHOW_HIDE_ANIM_DURATION = 200;
+        private static final int SHOW_HIDE_ANIM_DURATION = 400;
 
         private static final Interpolator SHOW_ANIM_INTERPOLATOR = new LinearOutSlowInInterpolator();
         private static final Interpolator HIDE_ANIM_INTERPOLATOR = new FastOutLinearInInterpolator();
@@ -34,6 +34,7 @@ public final class FloatingTipButtonBehaviorListener {
         public ForRecyclerView(@NonNull View button) {
             this.button = button;
             movingDistance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 64.0f, button.getResources().getDisplayMetrics());
+            button.setAlpha(0.0f);
             button.setTranslationY(-movingDistance);
         }
 
