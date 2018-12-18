@@ -1,5 +1,7 @@
 package me.readhub.android.md.model.api;
 
+import android.support.annotation.NonNull;
+
 import okhttp3.Headers;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -8,7 +10,7 @@ import retrofit2.Response;
 public class BackgroundCallback<Data> implements Callback<Data>, CallbackLifecycle<Data> {
 
     @Override
-    public final void onResponse(Call<Data> call, Response<Data> response) {
+    public final void onResponse(@NonNull Call<Data> call, @NonNull Response<Data> response) {
         boolean interrupt;
         if (response.isSuccessful()) {
             interrupt = onResultOk(response.code(), response.headers(), response.body());
@@ -21,7 +23,7 @@ public class BackgroundCallback<Data> implements Callback<Data>, CallbackLifecyc
     }
 
     @Override
-    public final void onFailure(Call<Data> call, Throwable t) {
+    public final void onFailure(@NonNull Call<Data> call, @NonNull Throwable t) {
         boolean interrupt;
         if (call.isCanceled()) {
             interrupt = onCallCancel();

@@ -26,7 +26,7 @@ public class ForegroundCallback<Data> implements Callback<Data>, CallbackLifecyc
     }
 
     @Override
-    public final void onResponse(Call<Data> call, Response<Data> response) {
+    public final void onResponse(@NonNull Call<Data> call, @NonNull Response<Data> response) {
         Activity activity = getActivity();
         if (ActivityUtils.isAlive(activity)) {
             boolean interrupt;
@@ -42,7 +42,7 @@ public class ForegroundCallback<Data> implements Callback<Data>, CallbackLifecyc
     }
 
     @Override
-    public final void onFailure(Call<Data> call, Throwable t) {
+    public final void onFailure(@NonNull Call<Data> call, @NonNull Throwable t) {
         Activity activity = getActivity();
         if (ActivityUtils.isAlive(activity)) {
             boolean interrupt;
