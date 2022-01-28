@@ -1,4 +1,8 @@
-# Readhub - Android #
+# Deprecated
+
+公知 Fenng 团队做的东西，不建议使用，会看坏脑子。
+
+# Readhub - Android
 
 [![Build Status](https://travis-ci.org/TakWolf/Readhub-Android.svg?branch=master)](https://travis-ci.org/TakWolf/Readhub-Android)
 [![Release](https://img.shields.io/github/release/TakWolf/Readhub-Android.svg)](https://github.com/TakWolf/Readhub-Android/releases/latest)
@@ -10,21 +14,11 @@
 
 [Readhub](https://readhub.cn) 第三方 Android 客户端。Material Design 风格。
 
-自用，非官方。数据来源于官方API接口。
-
-如果涉及侵权，请邮件告知删除。
-
-## Downloads ##
-
-- [FIR.im](https://fir.im/Readhub)
-
-- [酷安](https://www.coolapk.com/apk/me.readhub.android.md)
-
-## Screenshots ##
+## Screenshots
 
 ![Image](art/screenshot_s.png)
 
-## Dependencies ##
+## Dependencies
 
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 
@@ -42,15 +36,7 @@
 
 - [Material design icons](https://github.com/google/material-design-icons)
 
-## Author ##
-
-TakWolf
-
-[takwolf@foxmail.com](mailto:takwolf@foxmail.com)
-
-[http://takwolf.com](http://takwolf.com)
-
-## License ##
+## License
 
 ```
 Copyright 2017 TakWolf
